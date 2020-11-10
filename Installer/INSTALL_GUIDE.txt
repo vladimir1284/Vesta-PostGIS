@@ -1,0 +1,44 @@
+Vesta|Postgis Installation Guide:
+
+  1. Install "Common Operations and Development Environment (CODE)".
+   
+    1.1. Download public version of CODE from http://www.weather.gov/code88d/
+    1.2. Extract and follow pdf_doc/CODE_b?_?r?_?_install_instructions.pdf
+
+    (tested with "CODE B12.2r1.2: April 2011")
+
+    use:
+      HOSTNAME: rpga1
+      GROUP   : code
+      USER    : code?_?  # Example: code12_2
+
+  2. Configure radar parameters using RADAR_PARAMETERS.txt file
+
+    2.1. Edit on cfg/site_info.dea the parameters "rpg_name", "rda_lat", "rda_lon" and "rda_elev"
+
+      Example: 
+
+        site_info.rpg_name:	CCSB        # Radar ID for Casablanca
+        site_info.rda_lat:	23149       # Radar north latitude * 1000 (decimal degrees)
+        site_info.rda_lon:	-82350      # Radar east longitude * 1000 (decimal degrees)
+        site_info.rda_elev:	50          # Radar altitude  (meters above sea level)
+
+    2.2 Add host names "rda1", "vesta_web", "vesta-mosaic", "rpga1" on /etc/hosts
+      
+      Example:
+
+        192.168.107.97	rda1	   		# The RDA_Backend machine IP 
+        192.168.107.55	vesta-web  		# The Vesta|Web machine IP
+        192.168.107.98	rpga1	   		# The ORPG machine IP; or "self" IP
+        192.168.107.98	vesta-mosaic	# The ORPG machine IP; or "self" IP
+
+    2.3 Update configuration
+
+      mrpg -p startup # as "code?_?" USER
+    
+  3. Run installation scripts.
+
+    install_packages.sh  # as root
+    install.sh           # as "code?_?" USER
+
+  4. Reboot to start the engine. (start may delay a few the login screen on slow machines).
