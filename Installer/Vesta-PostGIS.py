@@ -38,7 +38,8 @@ if __name__ == '__main__':
     logger.debug("Initializing Vesta-PostGIS...")
     
     try:
-        a = GraphicProduct(filename, 'products_properties.xml', RADAR_ID)
+        gp = GraphicProduct(filename, 'products_properties.xml', RADAR_ID)
+        gp.upload()
 	commands.getoutput('rm %s' % filename)
     except:        
         class Myfile:

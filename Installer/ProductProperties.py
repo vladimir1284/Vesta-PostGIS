@@ -4,12 +4,13 @@ Created on 08/04/2013
 @author: vladimir
 '''
 from xml.dom import minidom
+from numpy import pi
 
 AXIS = {0:[-1,513,513,-1],
         1:'off',
         2:[0,0,0,230],
         3:True,
-        4:[0,0,0,920],
+        4:[0,2*pi,0,920],
         5:[0,1000,513,0],
         6:[0,0,0,460]}
     

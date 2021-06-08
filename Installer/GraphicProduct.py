@@ -14,7 +14,7 @@ from ProductBlocks.StandAloneTabularAlphanumeric import StTabularAlphanumeric
 from Phenomenon.CellTrend import Cell_trend_data
 
 
-import pg
+# import pg
 from time import gmtime
 import pyproj as pj  # @UnresolvedImport
 import logging
@@ -42,10 +42,6 @@ class GraphicProduct:
         self.georeference = []
         self.adata = ''
         self.data = ''
-        
-        # Database connection
-        self.DB_CONN = pg.connect(dbname='vesta-db', host='vesta-web', 
-                                  user='wilfre', passwd='billar')
         
         # Parsing Product Description Block
         self.pdb = ProductDescriptionBlock(self)
@@ -103,6 +99,13 @@ class GraphicProduct:
                 ct = Cell_trend_data(self)
                 ct.generate_images(self.st)
         
+       
+
+    def upload(self):        
+        # Database connection
+        self.DB_CONN = pg.connect(dbname='vesta-db', host='vesta-web', 
+                                  user='wilfre', passwd='billar')
+
         # Georeference
         if self.georeference:
             [minx, miny, maxx, maxy] = self.georeference[0]
@@ -129,9 +132,9 @@ class GraphicProduct:
             iu.upload(fig_file, image, self.dirname)
             if iu.ok:
                 commands.getoutput('rm images/'+self.RADAR_ID+'/'+image)
-	    fig_file.close()
-
-	    if self.pp.geographic:
+        fig_file.close()
+        
+        if self.pp.geographic:
             	wfile = file('images/'+self.RADAR_ID+'/'+image+'w', 'rb')
             	iu.upload(wfile, image+'w', self.dirname)
             	if iu.ok:
