@@ -13,9 +13,9 @@
 	1 - 'off'
 	2 - [0,0,0,230]
 	3 - True
-    4 - [0,0,0,920]
-    5 - [0,1000,513,0]
-    6 - [0,0,0,460]
+      4 - [0,0,0,920]
+      5 - [0,1000,513,0]
+      6 - [0,0,0,460]
 
   Stand Alone Symbology Block Products: 
 	73, 62, 75, 77 and 82 (True)
@@ -116,7 +116,7 @@
       pcode="37"
       long_name="Composite Reflectivity"
       resolution = "1"
-      range = "230" 
+      range = "464" 
       polar = "False"
       data_levels = "16"
       compressed = "False"
@@ -133,7 +133,7 @@
       pcode="97"
       long_name="Composite Reflectivity Edited for AP"
       resolution = "1"
-      range = "230" 
+      range = "464" 
       polar = "False"
       data_levels = "16"
       compressed = "False"
@@ -150,7 +150,7 @@
       pcode="38"
       long_name="Composite Reflectivity"
       resolution = "4"
-      range = "460" 
+      range = "928" 
       polar = "False"
       data_levels = "16"
       compressed = "False"
@@ -167,7 +167,7 @@
       pcode="98"
       long_name="Composite Reflectivity Edited for AP"
       resolution = "4"
-      range = "460" 
+      range = "928" 
       polar = "False"
       data_levels = "16"
       compressed = "False"
@@ -235,7 +235,7 @@
       pcode="57"
       long_name="Vertically Integrated Liquid"
       resolution = "4"
-      range = "230" 
+      range = "464" 
       polar = "False"
       data_levels = "16"
       compressed = "False"
@@ -252,7 +252,7 @@
       pcode="41"
       long_name="Echo Tops"
       resolution = "4"
-      range = "230" 
+      range = "464" 
       polar = "False"
       data_levels = "16"
       compressed = "False"

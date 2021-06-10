@@ -17,6 +17,22 @@ from osgeo import osr
 import os
 os.environ['GDAL_DATA'] = " /usr/share/gdal"
 
+'''
+        ['lbj';   'pde';   'csb';   'psj';   'cmw';   'pln';   'gpd';   'hlg';   'cnr'   ];
+rlon = [-84.4784 -82.5583 -82.3500 -80.1475 -77.8451 -77.4167 -75.6333 -76.2360 -77.8487];
+rlat = [ 21.9212  21.5669  23.1495  21.9892  21.3836  19.9167  20.0333  20.9200  21.4233];
+ralt = [      15       20       50     1150      160      900     1230      267      150];
+'''
+RADAR_LOCATIONS =  {'CLBJ':(21.9212, -84.4784),
+                    'CPDE':(21.5669, -82.5583),
+                    'CCSB':(23.1495, -82.3500),
+                    'CPSJ':(21.9892, -80.1475),
+                    'CCMW':(21.3836, -77.8451),                    
+                    'CPLN':(19.9167, -77.4167),
+                    'CGPD':(20.0333, -75.6333),
+                    'CHLG':(20.9200, -76.2360),
+                    'CCNR':(21.4233, -77.8487)}
+
 from Palette import Palette
 from ColorTable import VestaColorTable
 
@@ -105,20 +121,46 @@ class SymbologyBlock:
                     gp.storm.commit()
                     
         else:
+            # Handle directory creation
+            dir_name = 'images/' + self.gp.RADAR_ID + '/'
+            if not os.path.exists(os.path.dirname(dir_name)):
+                try:
+                    os.makedirs(os.path.dirname(dir_name))
+                except OSError as exc: # Guard against race condition
+                    if exc.errno != errno.EEXIST:
+                        raise
+
             if gp.pp.geographic:
-                my_dpi = 1.0
-                self.nPixels = int(1e3 * gp.pp.range / gp.pp.resolution)
-                figureSize = (self.nPixels / my_dpi, self.nPixels / my_dpi)
+                # my_dpi = 1.0
+                # self.nPixels = int(1e3 * gp.pp.range / gp.pp.resolution)
+                # figureSize = (self.nPixels / my_dpi, self.nPixels / my_dpi)
                 
                 # GeoTiff generation
+                nPixels = int(1e3 * gp.pp.range / gp.pp.resolution)
                 # create the 1-band raster file
-                self.dst_ds = gdal.GetDriverByName('GTiff').Create('images/' + self.gp.RADAR_ID + '/' + gp.file_name.split('.')[0]+'.tif', self.nPixels, self.nPixels, 1, gdal.GDT_Byte) 
+                dst_ds = gdal.GetDriverByName('GTiff').Create(dir_name + gp.file_name +'.tif', nPixels, nPixels, 1, gdal.GDT_Byte) 
                 # Georeference
-                geotransform = (-gp.pp.resolution*self.nPixels/2.0, gp.pp.resolution, 0, gp.pp.resolution*self.nPixels/2.0, 0, -gp.pp.resolution)
-                self.dst_ds.SetGeoTransform(geotransform)    # specify coords
+                geotransform = (-gp.pp.resolution*nPixels/2.0, gp.pp.resolution, 0, gp.pp.resolution*nPixels/2.0, 0, -gp.pp.resolution)
+                dst_ds.SetGeoTransform(geotransform)    # specify coords
                 srs = osr.SpatialReference()            # establish encoding
-                srs.ImportFromProj4("+proj=aeqd +lat_0=%f +lon_0=%f +x_0=0 +y_0=0 +units=m +datum=NAD27" % (gp.pdb.latitude, gp.pdb.longitude))
-                self.dst_ds.SetProjection(srs.ExportToWkt()) # export coords to file   
+                srs.ImportFromProj4("+proj=aeqd +lat_0=%f +lon_0=%f +x_0=0 +y_0=0 +units=m +datum=WGS84" % RADAR_LOCATIONS[self.gp.RADAR_ID])
+                dst_ds.SetProjection(srs.ExportToWkt()) # export coords to file   
+                # Load data and colors
+                band = dst_ds.GetRasterBand(1)
+                band.SetNoDataValue(0)             
+                colors = VestaColorTable('palettes/' + gp.pp.palette)
+                band.SetRasterColorTable(colors)
+                band.SetRasterColorInterpretation(gdal.GCI_PaletteIndex)
+                # Repeat for each package in the layer
+                while (actual_position < end_position):
+                    packet_code = read_half_unsigned(gp.binaryfile)
+                    package = PACKAGES[packet_code](gp)            
+                    package.writeData(band)   # write r-band to the raster
+                    actual_position = gp.binaryfile.tell() 
+                # write to disk
+                dst_ds.FlushCache()                     
+                band = None
+                dst_ds = None  
             else:
                 figureSize = (8, 8)  # Bigger for VAD & VWP
                 my_dpi = 150.0
@@ -133,66 +175,47 @@ class SymbologyBlock:
                 except:
                     logger.error(self.DB_CONN.error)
                     
-            # fig = pylab.figure(figsize=figureSize, dpi=my_dpi)
-            fig = pylab.figure(figsize=figureSize, dpi=my_dpi)
-            ax = pylab.Axes(fig, [0., 0., 1., 1.])
-            ax.set_axis_off()
-            fig.add_axes(ax)
-            # ax = pylab.axes(axisbg = 'w', polar=gp.pp.polar)
-            plt = Palette('palettes/' + gp.pp.palette)
-            
-            # Load data and colors
-            self.band = self.dst_ds.GetRasterBand(1)
-            self.band.SetNoDataValue(0)             
-            colors = VestaColorTable('palettes/' + gp.pp.palette)
-            self.band.SetRasterColorTable(colors)
-            self.band.SetRasterColorInterpretation(gdal.GCI_PaletteIndex)
-            
-            # Repeat for each package in the layer
-            while (actual_position < end_position):
-                packet_code = read_half_unsigned(gp.binaryfile)
-                package = PACKAGES[packet_code](gp)                
-                package.plot(ax, plt)
-                package.writeData(self.band)   # write r-band to the raster
-                actual_position = gp.binaryfile.tell()    
-                            
-            # pylab.xticks([])
-            # pylab.yticks([])
-            # pylab.axis(gp.pp.axis)
-            # if gp.pp.polar: 
-            #     pylab.axis('off')
-            fig.savefig('images/' + self.gp.RADAR_ID + '/' + gp.file_name, transparent=gp.pp.transparent, dpi=my_dpi)
-            # fig.savefig('images/' + self.gp.RADAR_ID + '/' + gp.file_name, format='png', bbox_inches='tight',
-            #             pad_inches=0, transparent=gp.pp.transparent, dpi=my_dpi)  # 396.5)
-            
-            
-            # write to disk
-            self.dst_ds.FlushCache()                     
-            self.band = None
-            self.dst_ds = None  
+                # fig = pylab.figure(figsize=figureSize, dpi=my_dpi)
+                fig = pylab.figure(figsize=figureSize, dpi=my_dpi)
+                ax = pylab.Axes(fig, [0., 0., 1., 1.])
+                ax.set_axis_off()
+                fig.add_axes(ax)
+                # ax = pylab.axes(axisbg = 'w', polar=gp.pp.polar)
+                plt = Palette('palettes/' + gp.pp.palette)    
 
-        if gp.pp.geographic:
-            wfile = file('images/' + self.gp.RADAR_ID + '/' + gp.file_name + 'w', 'w')
-            wfile.write(self.georeference())
-            wfile.close()
+                # Repeat for each package in the layer
+                while (actual_position < end_position):
+                    packet_code = read_half_unsigned(gp.binaryfile)
+                    package = PACKAGES[packet_code](gp)                
+                    package.plot(ax, plt)
+                    actual_position = gp.binaryfile.tell()    
 
-            gp.images.append(gp.file_name)
+                fig.savefig('images/' + self.gp.RADAR_ID + '/' + gp.file_name, transparent=gp.pp.transparent, dpi=my_dpi)
 
-    def georeference(self): 
-        # nPixels = self.gp.pp.range / self.gp.pp.resolution
-        # [minx, miny, maxx, maxy] = self.gp.georeference[0]
-        [proj_p_ur, proj_p_ll, proj_p_ul, proj_p_lr] = self.gp.georeference[0]
-        print ("UR: %i,%i" % (proj_p_ur[0]/1000, proj_p_ur[1]/1000))
-        print ("LL: %i,%i" % (proj_p_ll[0]/1000, proj_p_ll[1]/1000))
-        print ("UL: %i,%i" % (proj_p_ul[0]/1000, proj_p_ul[1]/1000))
-        print ("LR: %i,%i" % (proj_p_lr[0]/1000, proj_p_lr[1]/1000))
-        maxx = max(proj_p_ur[0], proj_p_lr[0])
-        maxy = max(proj_p_ur[1], proj_p_ul[1])
-        minx = min(proj_p_ul[0], proj_p_ll[0])
-        miny = max(proj_p_lr[1], proj_p_ll[1])
-        del_x = (maxx - minx) / (self.nPixels - 1)
-        del_y = (maxy - miny) / (self.nPixels - 1)
-        x_left = minx  # proj_p_ul[0]
-        y_up = maxy  # proj_p_ul[1]
-        return "%.2f\n0.0000000000\n0.0000000000\n-%.2f\n%.2f\n%.2f" % \
-                (del_x, del_y, x_left, y_up) 
+            
+
+    #     if gp.pp.geographic:
+    #         wfile = file('images/' + self.gp.RADAR_ID + '/' + gp.file_name + 'w', 'w')
+    #         wfile.write(self.georeference())
+    #         wfile.close()
+
+    #         gp.images.append(gp.file_name)
+
+    # def georeference(self): 
+    #     # nPixels = self.gp.pp.range / self.gp.pp.resolution
+    #     # [minx, miny, maxx, maxy] = self.gp.georeference[0]
+    #     [proj_p_ur, proj_p_ll, proj_p_ul, proj_p_lr] = self.gp.georeference[0]
+    #     print ("UR: %i,%i" % (proj_p_ur[0]/1000, proj_p_ur[1]/1000))
+    #     print ("LL: %i,%i" % (proj_p_ll[0]/1000, proj_p_ll[1]/1000))
+    #     print ("UL: %i,%i" % (proj_p_ul[0]/1000, proj_p_ul[1]/1000))
+    #     print ("LR: %i,%i" % (proj_p_lr[0]/1000, proj_p_lr[1]/1000))
+    #     maxx = max(proj_p_ur[0], proj_p_lr[0])
+    #     maxy = max(proj_p_ur[1], proj_p_ul[1])
+    #     minx = min(proj_p_ul[0], proj_p_ll[0])
+    #     miny = max(proj_p_lr[1], proj_p_ll[1])
+    #     del_x = (maxx - minx) / (self.nPixels - 1)
+    #     del_y = (maxy - miny) / (self.nPixels - 1)
+    #     x_left = minx  # proj_p_ul[0]
+    #     y_up = maxy  # proj_p_ul[1]
+    #     return "%.2f\n0.0000000000\n0.0000000000\n-%.2f\n%.2f\n%.2f" % \
+    #             (del_x, del_y, x_left, y_up) 

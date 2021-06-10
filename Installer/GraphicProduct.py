@@ -16,7 +16,7 @@ from Phenomenon.CellTrend import Cell_trend_data
 
 # import pg
 from time import gmtime
-import pyproj as pj  # @UnresolvedImport
+#import pyproj as pj  # @UnresolvedImport
 import logging
 import time
 import commands
@@ -60,7 +60,7 @@ class GraphicProduct:
         self.dirname =  RADAR_ID+"/%s_%i/%04i/%02i/%02i" % (self.pp.name,
                         pcode, self.vol_time.tm_year, self.vol_time.tm_mon, 
                         self.vol_time.tm_mday)
-        self.file_name = "%s_%s_%04i-%02i-%02i_%02i-%02i-00.png" % (self.pp.name, 
+        self.file_name = "%s_%s_%04i-%02i-%02i_%02i-%02i-00" % (self.pp.name, 
                         pcode,self.vol_time.tm_year, self.vol_time.tm_mon,
                         self.vol_time.tm_mday,self.vol_time.tm_hour,
                         self.vol_time.tm_min)
@@ -68,9 +68,9 @@ class GraphicProduct:
                         self.vol_time.tm_mon,self.vol_time.tm_mday,
                         self.vol_time.tm_hour, self.vol_time.tm_min)
 
-        self.radar_pj = pj.Proj(proj="aeqd", lat_0=self.pdb.latitude, 
-                                lon_0=self.pdb.longitude, 
-                                datum="NAD27", units="m")
+        # self.radar_pj = pj.Proj(proj="aeqd", lat_0=self.pdb.latitude, 
+        #                         lon_0=self.pdb.longitude, 
+        #                         datum="NAD27", units="m")
         
         logger.debug('\nDir name:\t' + self.dirname +'\n'+
                      'File name:\t' + self.file_name +'\n'+
