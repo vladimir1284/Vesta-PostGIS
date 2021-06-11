@@ -24,25 +24,6 @@ class Package_19(Package):
         binaryfile = gp.binaryfile
         
         length = read_half(binaryfile)
-#         if DEBUG:
-#             print "\nPacket 19: HDA Hail Data"
-#             print "Value of -999 indicates that the cell is beyond the maximum"
-#             print "  range for algorithm processing"
-#             
-#             num = length/10 
-#             print "Length of Data Block (in bytes) = %hd Number included=%d" % (length,num)
-#             
-#             for i in xrange(num):
-#                 ipos=read_half(binaryfile)
-#                 jpos=read_half(binaryfile)
-#                 prob=read_half(binaryfile)
-#                 prob_sevr=read_half(binaryfile)
-#                 m_size=read_half(binaryfile)
-#             
-#                 print "  I Pos: %4hd  J Pos: %4hd  Prob of Hail: %hd  of Severe Hail: %hd  Max Size (in): %hd" %(ipos,jpos,prob,prob_sevr,m_size);
-#                 
-#             print "Message Complete\n"
-#         else:
         logger.debug("Packet 19: HDA Hail Data")
         logger.debug("Value of -999 indicates that the cell is beyond the maximum")
         logger.debug("  range for algorithm processing")

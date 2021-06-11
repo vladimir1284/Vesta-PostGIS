@@ -29,5 +29,8 @@ class Tornado(Phenomena):
             self.DB_CONN.query(query_str)
             
         except:
-            logger.error(self.DB_CONN.error)  
+            try:
+                logger.error(self.DB_CONN.error) 
+            except expression as identifier:
+                logger.error("There is no database connection")  
 #             print '\n In function commit from class Tornado\n'

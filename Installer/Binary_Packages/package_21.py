@@ -29,7 +29,7 @@ class Package_21(Package):
         
         coord = struct.unpack('>2h',binaryfile.read(4))
         Ipos = coord[0] # Cell I coordinate at latest Volume Scan
-        Jpos = coord[0] # Cell J coordinate at latest Volume Scan
+        Jpos = coord[1] # Cell J coordinate at latest Volume Scan
 
          
         self.Ipos = Ipos/8

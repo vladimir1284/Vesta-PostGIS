@@ -173,16 +173,18 @@ class SymbologyBlock:
                 try: 
                     gp.DB_CONN.query(query_str)
                 except:
-                    logger.error(self.DB_CONN.error)
+                    try:
+                        logger.error(self.DB_CONN.error)
+                    except:
+                        logger.error("There is no database connection")
                     
-                # fig = pylab.figure(figsize=figureSize, dpi=my_dpi)
+                    
                 fig = pylab.figure(figsize=figureSize, dpi=my_dpi)
                 ax = pylab.Axes(fig, [0., 0., 1., 1.])
                 ax.set_axis_off()
                 fig.add_axes(ax)
-                # ax = pylab.axes(axisbg = 'w', polar=gp.pp.polar)
-                plt = Palette('palettes/' + gp.pp.palette)    
-
+                plt = Palette('palettes/' + gp.pp.palette) 
+                
                 # Repeat for each package in the layer
                 while (actual_position < end_position):
                     packet_code = read_half_unsigned(gp.binaryfile)
@@ -193,29 +195,3 @@ class SymbologyBlock:
                 fig.savefig('images/' + self.gp.RADAR_ID + '/' + gp.file_name, transparent=gp.pp.transparent, dpi=my_dpi)
 
             
-
-    #     if gp.pp.geographic:
-    #         wfile = file('images/' + self.gp.RADAR_ID + '/' + gp.file_name + 'w', 'w')
-    #         wfile.write(self.georeference())
-    #         wfile.close()
-
-    #         gp.images.append(gp.file_name)
-
-    # def georeference(self): 
-    #     # nPixels = self.gp.pp.range / self.gp.pp.resolution
-    #     # [minx, miny, maxx, maxy] = self.gp.georeference[0]
-    #     [proj_p_ur, proj_p_ll, proj_p_ul, proj_p_lr] = self.gp.georeference[0]
-    #     print ("UR: %i,%i" % (proj_p_ur[0]/1000, proj_p_ur[1]/1000))
-    #     print ("LL: %i,%i" % (proj_p_ll[0]/1000, proj_p_ll[1]/1000))
-    #     print ("UL: %i,%i" % (proj_p_ul[0]/1000, proj_p_ul[1]/1000))
-    #     print ("LR: %i,%i" % (proj_p_lr[0]/1000, proj_p_lr[1]/1000))
-    #     maxx = max(proj_p_ur[0], proj_p_lr[0])
-    #     maxy = max(proj_p_ur[1], proj_p_ul[1])
-    #     minx = min(proj_p_ul[0], proj_p_ll[0])
-    #     miny = max(proj_p_lr[1], proj_p_ll[1])
-    #     del_x = (maxx - minx) / (self.nPixels - 1)
-    #     del_y = (maxy - miny) / (self.nPixels - 1)
-    #     x_left = minx  # proj_p_ul[0]
-    #     y_up = maxy  # proj_p_ul[1]
-    #     return "%.2f\n0.0000000000\n0.0000000000\n-%.2f\n%.2f\n%.2f" % \
-    #             (del_x, del_y, x_left, y_up) 

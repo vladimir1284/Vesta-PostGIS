@@ -118,7 +118,7 @@ class Cell_trend_data:
                     pylab.errorbar(i,y,yerr,color = 'k',elinewidth = 1,capsize = 6,
                                    lolims=True)
               
-                self. white_axes(ax,N)
+                self.white_axes(ax,N)
                 
                 # leyenda
                 leg = pylab.legend(loc = 'upper center', ncol = 2, frameon = False, 
@@ -142,7 +142,7 @@ class Cell_trend_data:
                 pylab.plot(cell_trend.prob_svr_hail, 'go-', label='POSH', linewidth=2)
                 pylab.plot(cell_trend.prob_hail, 'kD-', label='POH', linewidth=2)
                                     
-                self. white_axes(ax,N)
+                self.white_axes(ax,N)
                 
                 # leyenda
                 leg = pylab.legend(loc = 'upper center', ncol = 2, frameon = False,
@@ -166,7 +166,7 @@ class Cell_trend_data:
                 pylab.plot(cell_trend.max_ref, 'ro-', label='DBZM', linewidth=2)
                 pylab.plot(cell_trend.cell_based_VIL, 'bD-', label='CB VIL', linewidth=2)
                                     
-                self. white_axes(ax,N)
+                self.white_axes(ax,N)
                 
                 # leyenda
                 leg = pylab.legend(loc = 'upper center', ncol = 2, frameon = False, 
@@ -180,9 +180,8 @@ class Cell_trend_data:
                 text1.set_color('r')
                 text2.set_color('b')
                 
-                # Saving figure
-                [base_name,ext] = self.gp.file_name.split('.')    
-                name = base_name + '_%s' % cell_trend.cell_id + '.' + ext
+                # Saving figure  
+                name = self.gp.file_name + '_%s' % cell_trend.cell_id + '.png'
                 fig.savefig('images/'+self.gp.RADAR_ID+'/'+name, format='png', facecolor='w')
                 self.gp.images.append(name)
                 
@@ -197,7 +196,11 @@ class Cell_trend_data:
                 try:
                     self.gp.DB_CONN.query (query_str)
                 except:
-                    logger.error(self.DB_CONN.error)
+                    try:
+                        logger.error(self.DB_CONN.error)
+                    except:
+                        logger.error("There is no database connection")
+                    
             except:
                 logger.info('Most probable no location for %s' % 
                             cell_trend.cell_id)

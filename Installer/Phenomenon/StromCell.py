@@ -31,6 +31,9 @@ class StormCell(Phenomena):
             self.DB_CONN.query(query_str)        
             self.commited = True
         except:
-            logger.error(self.DB_CONN.error)
-            #print '\n In function commit from class StromCell\n'   
+            try:
+                logger.error(self.DB_CONN.error)
+            except:
+                logger.error("There is no database connection")
+              
             

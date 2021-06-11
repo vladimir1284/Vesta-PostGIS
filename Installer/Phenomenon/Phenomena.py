@@ -5,6 +5,9 @@ Created on 11/04/2013
 '''
 
 import pyproj as pj  # @UnresolvedImport
+import logging
+
+logger = logging.getLogger("Phenomena")
 
 # EPSG:2085 - Cuba Norte 
 CUBAN_PJ = pj.Proj(proj="lcc", lat_1=22.35, lat_0=22.35, lon_0=-81, k_0=0.99993602,\
@@ -15,8 +18,12 @@ class Phenomena:
         self.gp = gp
         self.ipos = ipos
         self.jpos = jpos
-        
-        self.DB_CONN = gp.DB_CONN
+
+        try:
+            self.DB_CONN = gp.DB_CONN
+        except:
+            logger.error("Cannot connect to database")
+            
         self.data = gp.data
         self.adata = gp.adata
             
@@ -26,9 +33,11 @@ class Phenomena:
         proj_p = gp.radar_pj(u,v,inverse = True )
         self.longitude = proj_p[0]
         self.latitude = proj_p[1]
+        logger.debug("%.4f %.4f" % (proj_p[0],proj_p[1]))
+
         proj_p = CUBAN_PJ(proj_p[0], proj_p[1])
     
-        self.point = "%.0f %.0f" % (proj_p[0],proj_p[1])
+        self.point = "%.4f %.4f" % (proj_p[0],proj_p[1])
         self.line_past = ''
         self.line_forecast = ''
         

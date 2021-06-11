@@ -39,7 +39,7 @@ class Package_8(Package):
             gp.mesocyclone.set_id(self.text,self.ipos,self.jpos)
         
     def plot(self,axes, plt):
-        axes.text(self.ipos, self.jpos+FONT_SIZE, self.text, 
+        axes.text(self.ipos, self.jpos, self.text, 
                   fontsize = FONT_SIZE, color = plt.color(self.color),
                   horizontalalignment='left') 
 

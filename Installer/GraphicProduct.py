@@ -6,13 +6,13 @@ Created on 08/04/2013
 '''
 from ProductBlocks.ProductDescriptionBlock import ProductDescriptionBlock
 from ProductProperties import ProductProperties
-from ProductBlocks.SymbologyBlock import SymbologyBlock
+from ProductBlocks.SymbologyBlock import *
 from ProductBlocks.TabularAlphanumericBlock import TabularAlphanumericBlock
 from ImageUpload import ImageUpload
 from SiteConfiguration import OFFSET
 from ProductBlocks.StandAloneTabularAlphanumeric import StTabularAlphanumeric
 from Phenomenon.CellTrend import Cell_trend_data
-
+import pyproj as pj  # @UnresolvedImport
 
 # import pg
 from time import gmtime
@@ -68,9 +68,9 @@ class GraphicProduct:
                         self.vol_time.tm_mon,self.vol_time.tm_mday,
                         self.vol_time.tm_hour, self.vol_time.tm_min)
 
-        # self.radar_pj = pj.Proj(proj="aeqd", lat_0=self.pdb.latitude, 
-        #                         lon_0=self.pdb.longitude, 
-        #                         datum="NAD27", units="m")
+        self.radar_pj = pj.Proj(proj="aeqd", lat_0=RADAR_LOCATIONS[RADAR_ID][0], 
+                                lon_0=RADAR_LOCATIONS[RADAR_ID][1], 
+                                datum="WGS84", units="m")
         
         logger.debug('\nDir name:\t' + self.dirname +'\n'+
                      'File name:\t' + self.file_name +'\n'+
