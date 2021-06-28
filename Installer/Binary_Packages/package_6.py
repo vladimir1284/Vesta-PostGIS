@@ -37,9 +37,10 @@ class Package_6(Package):
             u *= 250 # m
             v *= 250 # m
             
-            proj_p = gp.radar_pj(u,v,inverse = True)
-            proj_p = CUBAN_PJ(proj_p[0], proj_p[1])
-            pos = "%.0f %.0f" % (proj_p[0], proj_p[1])
+#             proj_p = gp.radar_pj(u,v,inverse = True)
+#             proj_p = CUBAN_PJ(proj_p[0], proj_p[1])
+#             pos = "%.0f %.0f" % (proj_p[0], proj_p[1])
+            pos = "%.0f %.0f" % (u, v)
             if (i != (length - 4)):
                 tmp += pos+','
             else:

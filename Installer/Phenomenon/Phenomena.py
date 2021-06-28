@@ -16,8 +16,8 @@ CUBAN_PJ = pj.Proj(proj="lcc", lat_1=22.35, lat_0=22.35, lon_0=-81, k_0=0.999936
 class Phenomena:
     def __init__(self,ipos,jpos,gp):
         self.gp = gp
-        self.ipos = ipos
-        self.jpos = jpos
+        self.ipos = ipos*250
+        self.jpos = jpos*250
 
         try:
             self.DB_CONN = gp.DB_CONN
@@ -33,7 +33,7 @@ class Phenomena:
         proj_p = gp.radar_pj(u,v,inverse = True )
         self.longitude = proj_p[0]
         self.latitude = proj_p[1]
-        logger.debug("%.4f %.4f" % (proj_p[0],proj_p[1]))
+#         print("'lon':%.4f, 'lat':%.4f" % (proj_p[0],proj_p[1]))
 
         proj_p = CUBAN_PJ(proj_p[0], proj_p[1])
     
@@ -50,7 +50,7 @@ class Phenomena:
         self.line_forecast = line
 
         # Final package, so commit
-        self.commit()
+#         self.commit()
         
         
     def checkLines(self):

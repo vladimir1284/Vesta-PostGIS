@@ -54,7 +54,43 @@ class Cell_trend_data:
                 logger_file = Myfile()
                 traceback.print_exc(file = logger_file)
                 break
+    
+    def  kft2km(self, x):
+        return .305*x      
             
+    def printData(self, st):
+        SS_COVERAGE = self.gp.pp.range*0.53913 # From km to nm
+        for cell_trend in self.cells:
+            [azimut, range] = st.cell_location[cell_trend.cell_id]
+                
+            cell_str = "let %s = {'id': '%s', 'azimut':%i, 'range':%i,\n" %(cell_trend.cell_id, cell_trend.cell_id, azimut, range)
+            cell_str += "'tops':["
+            cell_str += "".join("%.1f, "%x for x in cell_trend.cell_top)
+            cell_str +="],\n"
+            cell_str += "'bases':["
+            cell_str += "".join("%.1f, "%x for x in cell_trend.cell_base)
+            cell_str +="],\n"
+            cell_str += "'max_ref_hgts':["
+            cell_str += "".join("%.1f, "%x for x in cell_trend.max_ref_hgt)
+            cell_str +="],\n"
+            cell_str += "'centroids':["
+            cell_str += "".join("%.1f, "%x for x in cell_trend.centroid_hgt)
+            cell_str +="],\n"
+            cell_str += "'poh':["
+            cell_str += "".join("%i, "%x for x in cell_trend.prob_hail)
+            cell_str +="],\n"
+            cell_str += "'posh':["
+            cell_str += "".join("%i, "%x for x in cell_trend.prob_svr_hail)
+            cell_str +="],\n"
+            cell_str += "'vil':["
+            cell_str += "".join("%i, "%x for x in cell_trend.cell_based_VIL)
+            cell_str +="],\n"
+            cell_str += "'maxZ':["
+            cell_str += "".join("%i, "%x for x in cell_trend.max_ref)
+            cell_str +="],\n"
+            cell_str += "}"                
+            print(cell_str)
+
             
     def generate_images(self, st):
         SS_COVERAGE = self.gp.pp.range*0.53913 # From km to nm
@@ -112,7 +148,7 @@ class Cell_trend_data:
                 N = len(cell_trend.cell_top) # Cantidad de Volumenes
                 for i in xrange(N):
                     y = (cell_trend.cell_top[i] + cell_trend.cell_base[i])/2.
-                    yerr = (cell_trend.cell_top[i] - cell_trend.cell_base[i])/2.
+                    yerr = (cell_trend.cell_top[i] - cell_trend.cell_base[i])
                     #print (y,yerr)
                     #print cell_trend.cell_base[i]
                     pylab.errorbar(i,y,yerr,color = 'k',elinewidth = 1,capsize = 6,
@@ -184,7 +220,8 @@ class Cell_trend_data:
                 name = self.gp.file_name + '_%s' % cell_trend.cell_id + '.png'
                 fig.savefig('images/'+self.gp.RADAR_ID+'/'+name, format='png', facecolor='w')
                 self.gp.images.append(name)
-                
+
+
                 # Database update
                 query_str = """SELECT insert_ss_product(
                                 '%s','%s','%s','%s','%s','%s');""" % \

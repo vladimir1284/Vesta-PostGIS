@@ -20,16 +20,20 @@ class StTabularAlphanumeric:
     def scan_data(self):
         self.gp.data = ''
         self.gp.adata = ''
+        is_adata = False
         u = 0
         count = 0
         self.cell_location = {} # cell_id -> [azimut, range]
         for i in xrange(self.number_of_pages):
             while True:
                 num = read_half(self.gp.binaryfile)  # num of chars in current line
-                if num == -1 : break # Romper si llega al final
-                line = self.gp.binaryfile.read(num)
-                if (line.find("ADAPTATION DATA") != -1):
-                    self.gp.adata += line
+                if num == -1 : # Romper si llega al final
+                    break 
+                line = self.gp.binaryfile.read(num)                    
+                if (line.find("ADAPTATION") != -1 or 
+                    is_adata):  
+                    is_adata = True                  
+                    self.gp.adata += line +"\n"
                 else:
                     if (line.find("STORM STRUCTURE") != -1):
                         u = 0
@@ -46,8 +50,14 @@ class StTabularAlphanumeric:
                                                               [int(b[0]), int(b[1])])
                             except:
                                 self.cell_location.setdefault(a[1].split()[0],[0, 0])
-                    self.gp.data += line
-                    
+                    self.gp.data += line +"\n"
+
+#         f = file("adata.txt",'w')
+#         f.write(self.gp.adata)
+#         f.close()
+#         f = file("data.txt",'w')
+#         f.write(self.gp.data)
+#         f.close()            
                 
 #     def insert_db(self):
 #         try:

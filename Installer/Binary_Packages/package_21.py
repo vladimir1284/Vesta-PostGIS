@@ -15,7 +15,7 @@ class Package_21(Package):
     page 3-117. Document Number 2620001L
     """
     
-    TREND_CODE_FACTOR = {1:100.,2:100.,3:100.,4:1,5:1,6:1,7:1,8:100.}
+#     TREND_CODE_FACTOR = {1:100.,2:100.,3:100.,4:1,5:1,6:1,7:1,8:100.}
     
     def __init__(self, binaryfile):
         '''
@@ -52,8 +52,8 @@ class Package_21(Package):
                                             # in the circular list
          
             values = struct.unpack('>'+str(num_vol)+'H',binaryfile.read(2*num_vol))
-            values = [x/self.TREND_CODE_FACTOR[trend_code] for x in values] # 100 Feet
-            self.cell.setValues(trend_code, values)
+#             values = [x/self.TREND_CODE_FACTOR[trend_code] for x in values] # 100 Feet
+            self.cell.setValues(trend_code, pylab.array(values))
 
 
 class Cell_trend:
@@ -70,23 +70,19 @@ class Cell_trend:
     def setCell_top(self, values):
         # If the value is over 700, then 1000 has been added to denote that 
         # the CELL TOP (BASE) was detected on the highest (lowest) elevation scan.
-        values = pylab.array(values)
-        values[values > 7] = 0.001
-        self.cell_top = 10*values
+#         values = pylab.array(values)
+#         values[values > 700] = values[values > 700] - 1000
+        self.cell_top = values/10.
         
     def setCell_base(self, values):
         # If the value is over 700, then 1000 has been added to denote that 
         # the CELL TOP (BASE) was detected on the highest (lowest) elevation scan.
-        values = pylab.array(values)
-        values[values > 7] = 0.001
-        self.cell_base = 10*values
+#         values = pylab.array(values)
+#         values[values > 700] = values[values > 700] - 1000
+        self.cell_base = values/10.
         
     def setMax_ref_hgt(self, values):
-        # If the value is over 700, then 1000 has been added to denote that 
-        # the CELL TOP (BASE) was detected on the highest (lowest) elevation scan.
-        values = pylab.array(values)
-        values[values > 7] = 0.001
-        self.max_ref_hgt = 10*values
+        self.max_ref_hgt = values/10.
         
         
     def setProb_hail(self, values):
@@ -106,5 +102,5 @@ class Cell_trend:
         
         
     def setCentroid_hgt(self, values):
-        self.centroid_hgt = 10*pylab.array(values)
+        self.centroid_hgt = values/10.
         

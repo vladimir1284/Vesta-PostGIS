@@ -17,7 +17,7 @@ class StormCell(Phenomena):
         
         
     def commit(self):
-        self.checkLines()
+#         self.checkLines()
         
         query_str = """SELECT insert_sti_product('%s', '%s', '%s','%s',
                 '%s', ST_GeomFromText('LINESTRING(%s)',2085),
@@ -26,7 +26,14 @@ class StormCell(Phenomena):
                 (self.gp.datetime,self.gp.RADAR_ID,
                  self.storm_id,self.data, self.adata, self.line_past, 
                  self.line_forecast, self.point)
-        logger.debug(query_str)
+#         logger.debug(query_str)
+        storm_str ="%s.Ipos=%i;%s.Jpos=%i;"%(self.storm_id, self.ipos,
+                                             self.storm_id, self.jpos)
+        
+        storm_str +="%s.past='%s';%s.forecast='%s';"%(self.storm_id, self.line_past,
+                                             self.storm_id, self.line_forecast)
+        
+        print(storm_str)
         try:
             self.DB_CONN.query(query_str)        
             self.commited = True

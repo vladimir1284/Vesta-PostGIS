@@ -41,7 +41,7 @@ class TabularAlphanumericBlock:
                     num = read_half(binaryfile)  # num of chars in current line
                     if num == -1 : break # Romper si llega al final
                     line = binaryfile.read(num)
-                    logger.debug(line)
+#                     logger.debug(line)
                     if (line.find("ADAPTATION") != -1) or \
                         (line.find("ADAPTABLE") != -1) or \
                         (line.find("ALTITUDES SELECTED") != -1) or adapt:
@@ -49,6 +49,12 @@ class TabularAlphanumericBlock:
                         gp.adata += line + '\n'
                     else:
                         gp.data += line + '\n'
+#             f = file("adata.txt",'w')
+#             f.write(gp.adata)
+#             f.close()
+#             f = file("data.txt",'w')
+#             f.write(gp.data)
+#             f.close()   
 #                 else:                        
 #                     process=True
 #                     num_lines = 0

@@ -97,7 +97,8 @@ class GraphicProduct:
             binaryfile.seek(OFFSET + self.pdb.gra_off*2,0)
             if len(binaryfile.read(2)) != 0:
                 ct = Cell_trend_data(self)
-                ct.generate_images(self.st)
+                #ct.generate_images(self.st)
+                ct.printData(self.st)
         
        
 
