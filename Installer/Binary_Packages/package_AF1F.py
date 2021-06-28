@@ -30,7 +30,13 @@ class Package_AF1F(Package):
         for i in xrange(radial_count):
             halves = struct.unpack('>3h',binaryfile.read(6))
             num_rle_halfwords   = halves[0] # Two bytes count
-
+            if (i==0):
+                start_angle = halves[1]
+                delta_angle = halves[2]
+                
+                # Angulo central en grados 
+                self.ini_angle = (start_angle+delta_angle/2.)/10.
+                
             num_bytes = 2*num_rle_halfwords
             radial = []
             s = binaryfile.read(num_bytes)
@@ -51,5 +57,5 @@ class Package_AF1F(Package):
         polar_data = np.array(self.radials, dtype=np.uint8)
         limit = (1e3 * self.gp.pp.range  - self.gp.pp.resolution) / 2.0
         x = y = np.arange(-limit, limit+1, self.gp.pp.resolution)
-        cart_data  = polar_to_cart(polar_data, 1, self.gp.pp.resolution, x, y)
+        cart_data  = polar_to_cart(polar_data, self.ini_angle, 1, self.gp.pp.resolution, x, y)
         band.WriteArray(cart_data)        

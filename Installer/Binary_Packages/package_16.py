@@ -32,6 +32,12 @@ class Package_16(Package):
         for i in xrange(radial_count):
             sector = struct.unpack('>3H',gp.binaryfile.read(6))
             num_bytes = sector[0]
+            if (i==0):
+                start_angle = sector[1]
+                delta_angle = sector[2]
+                
+                # Angulo central en grados 
+                self.ini_angle = (start_angle+delta_angle/2.)/10. 
 
             self.radials.append(struct.unpack(str(num_bytes)+'B',
                                 gp.binaryfile.read(num_bytes)))
@@ -41,5 +47,5 @@ class Package_16(Package):
         polar_data = np.array(self.radials, dtype=np.uint8)
         limit = (1e3 * self.gp.pp.range  - self.gp.pp.resolution) / 2.0
         x = y = np.arange(-limit, limit+1, self.gp.pp.resolution)
-        cart_data  = polar_to_cart(polar_data, 1, self.gp.pp.resolution, x, y)
+        cart_data  = polar_to_cart(polar_data, self.ini_angle, 1, self.gp.pp.resolution, x, y)
         band.WriteArray(cart_data)        

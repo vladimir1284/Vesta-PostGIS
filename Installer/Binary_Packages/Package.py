@@ -14,7 +14,7 @@ CUBAN_PJ = pj.Proj(proj="lcc", lat_1=22.35, lat_0=22.35, lon_0=-81, k_0=0.999936
                x_0=500000, y_0=280296.016, ellps="clrk66", datum="NAD27", units="m")
 
 # Auxiliary function to map polar data to a cartesian plane
-def polar_to_cart(polar_data, theta_step, range_step, x, y, order=3):
+def polar_to_cart(polar_data, ini_theta, theta_step, range_step, x, y, order=3):
 
     from scipy.ndimage.interpolation import map_coordinates as mp
 
@@ -24,7 +24,7 @@ def polar_to_cart(polar_data, theta_step, range_step, x, y, order=3):
 
     # Now that we have the X and Y coordinates of each point in the output plane
     # we can calculate their corresponding theta and range
-    Tc = 180-np.degrees(np.arctan2(Y, X)).ravel()
+    Tc = 180-np.degrees(np.arctan2(Y, X)).ravel() - ini_theta
     Rc = (np.sqrt(X**2 + Y**2)).ravel()
 
     # Negative angles are corrected
