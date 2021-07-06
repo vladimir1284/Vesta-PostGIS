@@ -68,8 +68,7 @@ class SymbologyBlock:
         '''
         Constructor
         '''    
-
-	self.gp = gp
+        self.gp = gp
         gp.binaryfile.seek(OFFSET + gp.pdb.sym_off * 2, 0)
         # pcode = gp.pdb.MH_msg_code
         

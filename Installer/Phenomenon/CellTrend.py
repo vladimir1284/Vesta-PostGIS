@@ -19,6 +19,7 @@ class Cell_trend_data:
         binaryfile = gp.binaryfile
         binaryfile.seek(OFFSET + gp.pdb.gra_off*2,0)
         self.times = []
+        self.time = []
         self.cells = []
         
         # Leyendo las horas
@@ -27,6 +28,7 @@ class Cell_trend_data:
         lts_vol_ptr = read_byte(binaryfile)
         for i in xrange(num_vols):
             min = read_half(binaryfile)
+            self.time.append(min)
             self.times.append('%02i%02i' % (min/60, pylab.mod(min,60)))
             #print self.times[i]
         
@@ -87,6 +89,9 @@ class Cell_trend_data:
             cell_str +="],\n"
             cell_str += "'maxZ':["
             cell_str += "".join("%i, "%x for x in cell_trend.max_ref)
+            cell_str +="],\n"
+            cell_str += "'time':["
+            cell_str += "".join("%i, "%x for x in self.time)
             cell_str +="],\n"
             cell_str += "}"                
             print(cell_str)

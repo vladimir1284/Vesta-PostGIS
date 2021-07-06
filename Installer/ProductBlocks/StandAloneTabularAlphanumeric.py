@@ -52,12 +52,12 @@ class StTabularAlphanumeric:
                                 self.cell_location.setdefault(a[1].split()[0],[0, 0])
                     self.gp.data += line +"\n"
 
-#         f = file("adata.txt",'w')
-#         f.write(self.gp.adata)
-#         f.close()
-#         f = file("data.txt",'w')
-#         f.write(self.gp.data)
-#         f.close()            
+        f = file("adata.txt",'w')
+        f.write(self.gp.adata)
+        f.close()
+        f = file("data.txt",'w')
+        f.write(self.gp.data)
+        f.close()            
                 
 #     def insert_db(self):
 #         try:

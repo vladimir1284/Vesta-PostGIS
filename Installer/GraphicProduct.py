@@ -136,11 +136,11 @@ class GraphicProduct:
         fig_file.close()
         
         if self.pp.geographic:
-            	wfile = file('images/'+self.RADAR_ID+'/'+image+'w', 'rb')
-            	iu.upload(wfile, image+'w', self.dirname)
-            	if iu.ok:
-                	commands.getoutput('rm images/'+self.RADAR_ID+'/'+image+'w')
-		wfile.close()
+            wfile = file('images/'+self.RADAR_ID+'/'+image+'w', 'rb')
+            iu.upload(wfile, image+'w', self.dirname)
+            if iu.ok:
+                commands.getoutput('rm images/'+self.RADAR_ID+'/'+image+'w')
+            wfile.close()
 
             
         if self.images: iu.disconnect()  # Disonnect if connected  
