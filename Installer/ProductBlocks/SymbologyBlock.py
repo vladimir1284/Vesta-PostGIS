@@ -99,12 +99,6 @@ class SymbologyBlock:
         end_position = self.data_len + actual_position
         
         if gp.pp.non_graphic:
-#            #context.gp.msg_code in NON_GRAPHIC:
-#            #context.fig = figure(figsize=(5.974,5.974))
-#            fig = matplotlib.figure(figsize=(15,15))
-#            #context.dbname = TABLE[context.gp.msg_code]
-#            #context.msg_Track_inf = Tracking_information(context)
-#            #context.msg_59 = Hail(context)
             while (actual_position < end_position):
                 packet_code = read_half_unsigned(gp.binaryfile)
                 package = PACKAGES[packet_code](gp)
@@ -129,21 +123,11 @@ class SymbologyBlock:
                     if exc.errno != errno.EEXIST:
                         raise
 
-            if gp.pp.geographic:
-                # my_dpi = 1.0
-                # self.nPixels = int(1e3 * gp.pp.range / gp.pp.resolution)
-                # figureSize = (self.nPixels / my_dpi, self.nPixels / my_dpi)
-                
-                # GeoTiff generation
+            if gp.pp.geographic:                
+                # Image generation
                 nPixels = int(1e3 * gp.pp.range / gp.pp.resolution)
-                # create the 1-band raster file GTiff
-                dst_ds = gdal.GetDriverByName('MEM').Create('', nPixels, nPixels, 1, gdal.GDT_Byte) 
-                # Georeference
-                # geotransform = (-gp.pp.resolution*nPixels/2.0, gp.pp.resolution, 0, gp.pp.resolution*nPixels/2.0, 0, -gp.pp.resolution)
-                # dst_ds.SetGeoTransform(geotransform)    # specify coords
-                # srs = osr.SpatialReference()            # establish encoding
-                # srs.ImportFromProj4("+proj=aeqd +lat_0=%f +lon_0=%f +x_0=0 +y_0=0 +units=m +datum=WGS84" % RADAR_LOCATIONS[self.gp.RADAR_ID])
-                # dst_ds.SetProjection(srs.ExportToWkt()) # export coords to file   
+                # create the 1-band raster file 
+                dst_ds = gdal.GetDriverByName('MEM').Create('', nPixels, nPixels, 1, gdal.GDT_Byte)  
                 # Load data and colors
                 band = dst_ds.GetRasterBand(1)
                 band.SetNoDataValue(0)             

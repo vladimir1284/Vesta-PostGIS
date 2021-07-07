@@ -5,6 +5,7 @@ Created on 13/04/2013
 '''
 from Phenomenon.Phenomena import Phenomena
 import logging
+import psycopg2 as pg
 
 logger = logging.getLogger("StormCell")
 
@@ -17,30 +18,58 @@ class StormCell(Phenomena):
         
         
     def commit(self):
-#         self.checkLines()
+        # Get adata id if exist, insert otherwise
+        query_sel = """SELECT ID from public.vestaweb_adaptationdata where 
+                    body = '%s'""" % self.gp.adata
+        query_ins = """INSERT INTO public.vestaweb_adaptationdata(body)
+                        VALUES ('%s') RETURNING id""" % self.gp.adata
+        logger.debug(query_sel)
+        adata_id = 0
+        try:      
+            cur = self.gp.DB_CONN.cursor()
+            cur.execute(query_sel)
+            adata_id = cur.fetchone()           
+            if (adata_id):
+                adata_id = adata_id[0]
+            else:
+                cur.execute(query_ins)
+                self.gp.DB_CONN.commit()
+                adata_id = cur.fetchone()[0]
+                logger.debug(query_ins)
+        except (Exception, pg.DatabaseError) as error:
+            logger.error(error)
+            
+        # Insert storm tracking information
+        if (len(self.line_past)>0):
+            past_Ipos = ('{'+''.join('%i, '%x[0] for x in self.line_past[1:]))[:-2] +'}'
+            past_Jpos = ('{'+''.join('%i, '%x[1] for x in self.line_past[1:]))[:-2] +'}'
+        else:
+            past_Ipos = '{}'
+            past_Jpos = '{}'
+            
+        if (len(self.line_forecast)>0):
+            forecast_Ipos = ('{'+''.join('%i, '%x[0] for x in self.line_forecast[1:]))[:-2] +'}'
+            forecast_Jpos = ('{'+''.join('%i, '%x[1] for x in self.line_forecast[1:]))[:-2] +'}'
+        else:
+            forecast_Ipos = '{}'
+            forecast_Jpos = '{}'  
+            
+        radar_id = "(SELECT id from vestaweb_radar WHERE radar_code='%s')" % self.gp.RADAR_ID
         
-        query_str = """SELECT insert_sti_product('%s', '%s', '%s','%s',
-                '%s', ST_GeomFromText('LINESTRING(%s)',2085),
-                ST_GeomFromText('LINESTRING(%s)',2085),
-                ST_GeomFromText('POINT(%s)',2085));""" %\
-                (self.gp.datetime,self.gp.RADAR_ID,
-                 self.storm_id,self.data, self.adata, self.line_past, 
-                 self.line_forecast, self.point)
-#         logger.debug(query_str)
-        storm_str ="%s.Ipos=%i;%s.Jpos=%i;"%(self.storm_id, self.ipos,
-                                             self.storm_id, self.jpos)
+        query_str = """INSERT INTO public.vestaweb_stormtracking(created, label, 
+                    "Ipos", "Jpos", "past_Ipos", "past_Jpos", "forecast_Ipos", 
+                    "forecast_Jpos", radar_id) VALUES ('%s', '%s', %i, %i, '%s', 
+                    '%s', '%s', '%s', %s)""" % (self.gp.datetime, self.storm_id,
+                    self.ipos, self.jpos, past_Ipos, past_Jpos, forecast_Ipos, 
+                    forecast_Jpos, radar_id)
+        logger.debug(query_str)
         
-        storm_str +="%s.past='%s';%s.forecast='%s';"%(self.storm_id, self.line_past,
-                                             self.storm_id, self.line_forecast)
-        
-        print(storm_str)
-        try:
-            self.DB_CONN.query(query_str)        
-            self.commited = True
-        except:
-            try:
-                logger.error(self.DB_CONN.error)
-            except:
-                logger.error("There is no database connection")
+        try:      
+            cur = self.gp.DB_CONN.cursor()
+            cur.execute(query_str)
+            self.gp.DB_CONN.commit()
+            logger.debug(query_str)
+        except (Exception, pg.DatabaseError) as error:
+            logger.error(error)
               
             

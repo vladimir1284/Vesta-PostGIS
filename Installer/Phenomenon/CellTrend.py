@@ -10,6 +10,7 @@ import pylab
 from Binary_Packages.package_21 import Package_21
 import struct
 import logging
+import psycopg2 as pg
 
 logger = logging.getLogger("Cell_trend_data")
 
@@ -60,41 +61,58 @@ class Cell_trend_data:
     def  kft2km(self, x):
         return .305*x      
             
-    def printData(self, st):
-        SS_COVERAGE = self.gp.pp.range*0.53913 # From km to nm
+    def upload(self, st):
+        # Get adata id if exist, insert otherwise
+        query_sel = """SELECT ID from public.vestaweb_adaptationdata where 
+                    body = '%s'""" % self.gp.adata
+        query_ins = """INSERT INTO public.vestaweb_adaptationdata(body)
+                        VALUES ('%s') RETURNING id""" % self.gp.adata
+        logger.debug(query_sel)
+        adata_id = 0
+        try:      
+            cur = self.gp.DB_CONN.cursor()
+            cur.execute(query_sel)
+            adata_id = cur.fetchone()           
+            if (adata_id):
+                adata_id = adata_id[0]
+            else:
+                cur.execute(query_ins)
+                self.gp.DB_CONN.commit()
+                adata_id = cur.fetchone()[0]
+                logger.debug(query_ins)
+        except (Exception, pg.DatabaseError) as error:
+            logger.error(error)
+        
+        # Insert storm cells
         for cell_trend in self.cells:
-            [azimut, range] = st.cell_location[cell_trend.cell_id]
-                
-            cell_str = "let %s = {'id': '%s', 'azimut':%i, 'range':%i,\n" %(cell_trend.cell_id, cell_trend.cell_id, azimut, range)
-            cell_str += "'tops':["
-            cell_str += "".join("%.1f, "%x for x in cell_trend.cell_top)
-            cell_str +="],\n"
-            cell_str += "'bases':["
-            cell_str += "".join("%.1f, "%x for x in cell_trend.cell_base)
-            cell_str +="],\n"
-            cell_str += "'max_ref_hgts':["
-            cell_str += "".join("%.1f, "%x for x in cell_trend.max_ref_hgt)
-            cell_str +="],\n"
-            cell_str += "'centroids':["
-            cell_str += "".join("%.1f, "%x for x in cell_trend.centroid_hgt)
-            cell_str +="],\n"
-            cell_str += "'poh':["
-            cell_str += "".join("%i, "%x for x in cell_trend.prob_hail)
-            cell_str +="],\n"
-            cell_str += "'posh':["
-            cell_str += "".join("%i, "%x for x in cell_trend.prob_svr_hail)
-            cell_str +="],\n"
-            cell_str += "'vil':["
-            cell_str += "".join("%i, "%x for x in cell_trend.cell_based_VIL)
-            cell_str +="],\n"
-            cell_str += "'maxZ':["
-            cell_str += "".join("%i, "%x for x in cell_trend.max_ref)
-            cell_str +="],\n"
-            cell_str += "'time':["
-            cell_str += "".join("%i, "%x for x in self.time)
-            cell_str +="],\n"
-            cell_str += "}"                
-            print(cell_str)
+            [azimut, cell_range] = st.cell_location[cell_trend.cell_id]            
+            tops = ('{'+''.join('%.1f, '%x for x in cell_trend.cell_top))[:-2] +'}'
+            bases = '{'+''.join('%.1f, '%x for x in cell_trend.cell_base)[:-2] +'}'
+            max_ref_hgts = '{'+''.join('%.1f, '%x for x in cell_trend.max_ref_hgt)[:-2] +'}'
+            centroids = '{'+''.join('%.1f, '%x for x in cell_trend.centroid_hgt)[:-2] +'}'
+            poh = '{'+''.join('%i, '%x for x in cell_trend.prob_hail)[:-2] +'}'
+            posh = '{'+''.join('%i, '%x for x in cell_trend.prob_svr_hail)[:-2] +'}'
+            vil = '{'+''.join('%i, '%x for x in cell_trend.cell_based_VIL)[:-2] +'}'
+            maxZ = '{'+''.join('%i, '%x for x in cell_trend.max_ref)[:-2] +'}'
+            time = '{'+''.join('%i, '%x for x in self.time)[:-2] +'}'
+            radar_id = "(SELECT id from vestaweb_radar WHERE radar_code='%s')" % self.gp.RADAR_ID
+            
+            query_str = """INSERT INTO public.vestaweb_stormcell(created, label,
+                        azimut, range, tops, bases, max_ref_hgts, centroids, 
+                        poh, posh, vil, "maxZ", time, adata_id, radar_id)
+                        VALUES ('%s', '%s', %i, %i, '%s', '%s', '%s', '%s', '%s', '%s', '%s', 
+                        '%s', '%s', %i, %s)""" % (
+                            self.gp.datetime, cell_trend.cell_id, azimut, cell_range,
+                            tops, bases, max_ref_hgts, centroids, poh, posh, vil, 
+                            maxZ, time, adata_id, radar_id)
+            
+            try:      
+                cur = self.gp.DB_CONN.cursor()
+                cur.execute(query_str)
+                self.gp.DB_CONN.commit()
+                logger.debug(query_str)
+            except (Exception, pg.DatabaseError) as error:
+                logger.error(error)
 
             
     def generate_images(self, st):

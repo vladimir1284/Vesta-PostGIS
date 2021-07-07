@@ -29,22 +29,15 @@ class Package_6(Package):
         logger.debug("Packet 6 Length of Data Block (in bytes) = %hd" % length)
         logger.debug("Number of Vectors: %i" % num_vectors)        
         
-        tmp = ''            
+        tmp = []            
         for i in xrange(0,length,4):
             u = read_half(binaryfile)
             v = read_half(binaryfile)
             logger.debug("  I Starting Point: %hd   J Starting Point: %hd" % (u,v))
             u *= 250 # m
             v *= 250 # m
+            tmp.append([u, v])
             
-#             proj_p = gp.radar_pj(u,v,inverse = True)
-#             proj_p = CUBAN_PJ(proj_p[0], proj_p[1])
-#             pos = "%.0f %.0f" % (proj_p[0], proj_p[1])
-            pos = "%.0f %.0f" % (u, v)
-            if (i != (length - 4)):
-                tmp += pos+','
-            else:
-                tmp += pos
         if set_line != None:
             set_line(tmp)
             
