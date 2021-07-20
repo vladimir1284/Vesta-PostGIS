@@ -85,7 +85,8 @@
 #define RE  6371        /* earth's radius in km */
 
 #define AZIMUTH    360           /* number of radials per elevation */
-#define RANGE1     230           /* 230 km */
+//#define RANGE1     230           /* 230 km */
+#define RANGE1     460           /* 460 km edited for Cuba*/
 #define RANGE2     460           /* 460 km */
  
 #define THOUSAND   1000

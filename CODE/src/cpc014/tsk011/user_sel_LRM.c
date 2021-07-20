@@ -115,7 +115,7 @@
 #define LOG
 #undef  LOG     /* Turn off log msg. To turn on, comment out this line. */
 #define DEBUG
-#undef  DEBUG   /* Turn off debug msg. To turn on, comment out this line. */ 
+//#undef  DEBUG   /* Turn off debug msg. To turn on, comment out this line. */
 
   /* 
   ** Estimated output buffer size in bytes. 
@@ -130,7 +130,8 @@
   ** subtotal            85110 bytes 
   ** allocated size 90000 byte to allow overflow 
   */
-#define OUT_BUF_SIZE 90000    
+//#define OUT_BUF_SIZE 90000
+#define OUT_BUF_SIZE 170000   // 167910  ((460 bins + 6 header bytes) * 360 radials)
 
 /************** local global variables ******************/
 
