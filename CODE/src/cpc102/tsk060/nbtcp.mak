@@ -35,14 +35,14 @@ LIBPATH =
 # will have to be moved to $(MAKEINC)/make.$(ARCH).
 # libraries specific to orpg
 # NOTE: Do Not Remove This Static Linker Option (leave the system libs dynamic)
-LOCAL_LIBRARIES = $(LIBDIR)/libinfr.a -lz -lbz2 -lpthread
+LOCAL_LIBRARIES = $(LIBDIR)/libinfr.a
 DEBUG_LOCALLIBS = $(LOCAL_LIBRARIES) 
 
 # Architecture and debug or profiling tool dependent linker options for
 # lnux_x86
 lnux_x86_LD_OPTS =
 
-lnux_x86_DEBUG_LD_OPTS =
+lnux_x86_DEBUG_LD_OPTS = -lz -lbz2 -lpthread
 lnux_x86_GPROF_LD_OPTS = $(lnux_x86_DEBUG_LD_OPTS)
 
 

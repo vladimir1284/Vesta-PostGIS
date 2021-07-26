@@ -148,9 +148,9 @@ int main(int argc, char **argv)
         exit (-1);
      }
 
-        /* read the RPS list filename from the user */
-
-     Read_rps_filename ();
+//        /* read the RPS list filename from the user */
+//
+//     Read_rps_filename ();
 
         /* construct the path name of the file that contains the RPS list
            to be sent to the ORPG */
@@ -182,17 +182,18 @@ orpgname,password,filepath,linkindex,orpgport);     */
     }
 
        /* get the file naming convention for the product files */
+    PROC_publish_naming_convention (2);
 
-    if (PROC_get_product_dir () != NULL) {
-       if ( (!Otr_script) && (!WMO_AWIPS_header_added) )
-          Get_file_naming_convention ();
-       else {
-          if( WMO_AWIPS_header_added )
-             PROC_publish_naming_convention (8);
-          else
-             PROC_publish_naming_convention (1);
-       }
-    }
+//    if (PROC_get_product_dir () != NULL) {
+//       if ( (!Otr_script) && (!WMO_AWIPS_header_added) )
+//          Get_file_naming_convention ();
+//       else {
+//          if( WMO_AWIPS_header_added )
+//             PROC_publish_naming_convention (8);
+//          else
+//             PROC_publish_naming_convention (1);
+//       }
+//    }
 
       /* initialize the global arrays */
 
@@ -743,6 +744,7 @@ static void Print_help (char **argv)
    printf ("         -R Remove products from directory older than X minutes (dft = 0 (Never))\n");
    printf ("         -P Purge directory at startup (dft = No)\n");
    printf ("         -d Directory where product files are written\n");
+   printf ("         -k filename of the rps list\n");
    printf ("         -D Same as \"-d\" except any files in directory will be deleted\n");
    printf ("         -p Orpg port number (dft = %d)\n", ORPGPORT);
    printf ("         -s Site_id ID of the product data (dft = %s)\n", ORPGNAME);
@@ -822,7 +824,7 @@ static int Read_options (int argc, char **argv)
    }
 
    Remove_products = 0;
-   while ((c = getopt (argc, argv, "AC:R:D:bid:p:s:u:w:j:l:r:coht?")) != EOF) {
+   while ((c = getopt (argc, argv, "AC:R:D:bid:p:s:u:w:j:l:r:k:coht?")) != EOF) {
 	    switch (c) {
 
          case 'A':
@@ -859,6 +861,12 @@ static int Read_options (int argc, char **argv)
                printf ("program is aborting\n");
                err = -1;
             }
+            break;
+
+         case 'k':  /* rps list filename */
+            number_args +=2;
+            strncpy (Rps_filename, optarg, FILENAME_MAX);
+//            strncpy (&Rps_filename[FILENAME_MAX -1], "\0", 1);
             break;
 
          case 'o':   /* WAN OTR interactive mode only */

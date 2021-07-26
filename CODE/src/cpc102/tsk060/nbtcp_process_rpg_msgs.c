@@ -276,6 +276,15 @@ int PROC_process_msg (char *buf, int msg_len)
              strcat (Err_msg, filepathname);
              MA_abort(Err_msg);
          }
+         // Call vesta-postgis
+         sprintf(Log_msg, "./Vesta-PostGIS.py -s=%4s -f=%s&",MA_get_site_id (),filepathname);
+//         MA_printlog (Log_msg);
+//         printf ("\nInicio...\n");
+         FILE *f = popen(Log_msg,"r");
+         pclose(f);
+//         printf ("Fin...\n");
+
+
          prodfd = -1;
          Remove_from_list();
       }
