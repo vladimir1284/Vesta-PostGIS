@@ -1,0 +1,20 @@
+ 1   59    HI    Hail Index                                          UNU      UNU      UNU      UNU      UNU      UNU      
+ 2   48    VWP   VAD Wind Profile                                    UNU      UNU      UNU      UNU      UNU      UNU           
+ 3   62    SS    Storm Structure                                     UNU      UNU      UNU      UNU      UNU      UNU      
+ 4   58    STI   Storm Tracking Information                          UNU      UNU      UNU      UNU      UNU      UNU      
+ 5   31    USP   User Selectable Storm Total Precipitation: 16 leve  -1       24       UNU      UNU      UNU      UNU      
+ 6   32    DHR   Digital Hybrid Scan Reflectivity: 256 level/0.54 n  UNU      UNU      UNU      UNU      UNU      UNU        
+ 7   61    TVS   Tornado Vortex Signature                            UNU      UNU      UNU      UNU      UNU      UNU      
+ 8   94    DR    Base Reflectivity Data Array Product: 256 level/0.  UNU      UNU      5        UNU      UNU      UNU          
+ 9   99    DV    Base Velocity Data Array Product: 256 level/0.13 n  UNU      UNU      5        UNU      UNU      UNU      
+10   78    OHP   Surface Rainfall Accumulation (1 hr): 16 level/1.1  UNU      UNU      UNU      UNU      UNU      UNU      
+11   79    THP   Surface Rainfall Accumulation (3 hr): 16 level/1.1  UNU      UNU      UNU      UNU      UNU      UNU      
+12   80    STP   Storm Total Rainfall Accumulation: 16 level/1.1 nm  UNU      UNU      UNU      UNU      UNU      UNU      
+13   81    DPA   Hourly Digital Precip Array: 256 level              UNU      UNU      UNU      UNU      UNU      UNU      
+14   82    SPD   Supplemental Precipitation Data                     UNU      UNU      UNU      UNU      UNU      UNU      
+15   84    VAD   Velocity Azimuth Display: 8 level/5 kts             UNU      UNU      15       UNU      UNU      UNU        
+16  137   ULR   User Selectable Layer Composite Reflectivity (Maxi  0        0        UNU      UNU      UNU      UNU      
+17  138   DSP   Digital Storm Total Rainfall Accumulation: 256 lev  UNU      UNU      UNU      UNU      UNU      UNU   
+18  141   MD    Mesocyclone Detection Product                       UNU      UNU      UNU      UNU      UNU      UNU       
+19  149   DMD   Mesocyclone Detection Data Array Product            UNU      UNU      5        UNU      UNU      UNU     
+20  155   SDW   Super Resolution Spectrum Width Data Array Product  UNU      UNU      5        UNU      UNU      UNU            

@@ -1,0 +1,224 @@
+1    19    R     Base Reflectivity: 16 level/0.54 nm                 UNU      UNU      5        UNU      UNU      UNU      
+2    19    R     Base Reflectivity: 16 level/0.54 nm                 UNU      UNU      9        UNU      UNU      UNU      
+3    19    R     Base Reflectivity: 16 level/0.54 nm                 UNU      UNU      13       UNU      UNU      UNU      
+4    19    R     Base Reflectivity: 16 level/0.54 nm                 UNU      UNU      18       UNU      UNU      UNU      
+5    19    R     Base Reflectivity: 16 level/0.54 nm                 UNU      UNU      24       UNU      UNU      UNU      
+6    19    R     Base Reflectivity: 16 level/0.54 nm                 UNU      UNU      31       UNU      UNU      UNU      
+7    19    R     Base Reflectivity: 16 level/0.54 nm                 UNU      UNU      40       UNU      UNU      UNU      
+8    20    R     Base Reflectivity: 16 level/1.1 nm                  UNU      UNU      5        UNU      UNU      UNU      
+9    20    R     Base Reflectivity: 16 level/1.1 nm                  UNU      UNU      9        UNU      UNU      UNU      
+10   20    R     Base Reflectivity: 16 level/1.1 nm                  UNU      UNU      13       UNU      UNU      UNU      
+11   20    R     Base Reflectivity: 16 level/1.1 nm                  UNU      UNU      18       UNU      UNU      UNU      
+12   20    R     Base Reflectivity: 16 level/1.1 nm                  UNU      UNU      24       UNU      UNU      UNU      
+13   20    R     Base Reflectivity: 16 level/1.1 nm                  UNU      UNU      31       UNU      UNU      UNU      
+14   20    R     Base Reflectivity: 16 level/1.1 nm                  UNU      UNU      40       UNU      UNU      UNU      
+15   30    SW    Base Spectrum Width: 8 level/0.54 nm                UNU      UNU      5        UNU      UNU      UNU      
+16   30    SW    Base Spectrum Width: 8 level/0.54 nm                UNU      UNU      9        UNU      UNU      UNU      
+17   30    SW    Base Spectrum Width: 8 level/0.54 nm                UNU      UNU      13       UNU      UNU      UNU      
+18   30    SW    Base Spectrum Width: 8 level/0.54 nm                UNU      UNU      18       UNU      UNU      UNU      
+19   30    SW    Base Spectrum Width: 8 level/0.54 nm                UNU      UNU      24       UNU      UNU      UNU      
+20   30    SW    Base Spectrum Width: 8 level/0.54 nm                UNU      UNU      31       UNU      UNU      UNU      
+21   30    SW    Base Spectrum Width: 8 level/0.54 nm                UNU      UNU      40       UNU      UNU      UNU      
+22   27    V     Base Velocity: 16 level/0.54 nm                     UNU      UNU      5        UNU      UNU      UNU      
+23   27    V     Base Velocity: 16 level/0.54 nm                     UNU      UNU      9        UNU      UNU      UNU      
+24   27    V     Base Velocity: 16 level/0.54 nm                     UNU      UNU      13       UNU      UNU      UNU      
+25   27    V     Base Velocity: 16 level/0.54 nm                     UNU      UNU      18       UNU      UNU      UNU      
+26   27    V     Base Velocity: 16 level/0.54 nm                     UNU      UNU      24       UNU      UNU      UNU      
+27   27    V     Base Velocity: 16 level/0.54 nm                     UNU      UNU      31       UNU      UNU      UNU      
+28   27    V     Base Velocity: 16 level/0.54 nm                     UNU      UNU      40       UNU      UNU      UNU      
+29   37    CR    Composite Reflectivity: 16 level/0.54 nm            UNU      UNU      UNU      UNU      UNU      UNU      
+30   38    CR    Composite Reflectivity: 16 level/2.2 nm             UNU      UNU      UNU      UNU      UNU      UNU      
+31   41    ET    Echo Tops: 16 level/2.2 nm                          UNU      UNU      UNU      UNU      UNU      UNU      
+32   59    HI    Hail Index                                          UNU      UNU      UNU      UNU      UNU      UNU      
+33   48    VWP   VAD Wind Profile                                    UNU      UNU      UNU      UNU      UNU      UNU      
+34   65    LRM   Layer Composite Reflectivity (Layer 1 Maximum)      UNU      UNU      UNU      UNU      UNU      UNU      
+35   66    LRM   Layer Composite Reflectivity (Layer 2 Maximum)      UNU      UNU      UNU      UNU      UNU      UNU      
+36   67    APR   Layer Composite Reflectivity - AP Removed: 8 level  UNU      UNU      UNU      UNU      UNU      UNU      
+37   62    SS    Storm Structure                                     UNU      UNU      UNU      UNU      UNU      UNU      
+38   58    STI   Storm Tracking Information                          UNU      UNU      UNU      UNU      UNU      UNU      
+39   31    USP   User Selectable Storm Total Precipitation: 16 leve  -1       24       UNU      UNU      UNU      UNU      
+40   32    DHR   Digital Hybrid Scan Reflectivity: 256 level/0.54 n  UNU      UNU      UNU      UNU      UNU      UNU      
+41   56    SRM   Storm Relative Velocity (Map): 16 level/0.54 nm     UNU      UNU      5        -1       1800     UNU      
+42   56    SRM   Storm Relative Velocity (Map): 16 level/0.54 nm     UNU      UNU      9        -1       1800     UNU      
+43   56    SRM   Storm Relative Velocity (Map): 16 level/0.54 nm     UNU      UNU      13       -1       1800     UNU      
+44   56    SRM   Storm Relative Velocity (Map): 16 level/0.54 nm     UNU      UNU      18       -1       1800     UNU      
+45   56    SRM   Storm Relative Velocity (Map): 16 level/0.54 nm     UNU      UNU      24       -1       1800     UNU      
+46   56    SRM   Storm Relative Velocity (Map): 16 level/0.54 nm     UNU      UNU      31       -1       1800     UNU      
+47   56    SRM   Storm Relative Velocity (Map): 16 level/0.54 nm     UNU      UNU      40       -1       1800     UNU      
+48   61    TVS   Tornado Vortex Signature                            UNU      UNU      UNU      UNU      UNU      UNU      
+49   51    VCS   Cross Section (Velocity): 16 level/0.54 x 0.27 nm   900      300      1250     600      UNU      UNU      
+50   50    RCS   Cross Section (Reflectivity): 16 level/0.54 x 0.27  900      300      1250     600      UNU      UNU      
+51   57    VIL   Vertically Integrated Liquid: 16 level/2.2 nm       UNU      UNU      UNU      UNU      UNU      UNU      
+52   93    DBV   ITWS Digital Velocity Product: 256 level/0.54 nm    UNU      UNU      5        UNU      UNU      UNU      
+53   93    DBV   ITWS Digital Velocity Product: 256 level/0.54 nm    UNU      UNU      9        UNU      UNU      UNU      
+54   93    DBV   ITWS Digital Velocity Product: 256 level/0.54 nm    UNU      UNU      13       UNU      UNU      UNU      
+55   93    DBV   ITWS Digital Velocity Product: 256 level/0.54 nm    UNU      UNU      18       UNU      UNU      UNU      
+56   93    DBV   ITWS Digital Velocity Product: 256 level/0.54 nm    UNU      UNU      24       UNU      UNU      UNU      
+57   93    DBV   ITWS Digital Velocity Product: 256 level/0.54 nm    UNU      UNU      31       UNU      UNU      UNU      
+58   93    DBV   ITWS Digital Velocity Product: 256 level/0.54 nm    UNU      UNU      40       UNU      UNU      UNU      
+59   94    DR    Base Reflectivity Data Array Product: 256 level/0.  UNU      UNU      5        UNU      UNU      UNU      
+60   94    DR    Base Reflectivity Data Array Product: 256 level/0.  UNU      UNU      9        UNU      UNU      UNU      
+61   94    DR    Base Reflectivity Data Array Product: 256 level/0.  UNU      UNU      13       UNU      UNU      UNU      
+62   94    DR    Base Reflectivity Data Array Product: 256 level/0.  UNU      UNU      18       UNU      UNU      UNU      
+63   94    DR    Base Reflectivity Data Array Product: 256 level/0.  UNU      UNU      24       UNU      UNU      UNU      
+64   94    DR    Base Reflectivity Data Array Product: 256 level/0.  UNU      UNU      31       UNU      UNU      UNU      
+65   94    DR    Base Reflectivity Data Array Product: 256 level/0.  UNU      UNU      40       UNU      UNU      UNU      
+66   99    DV    Base Velocity Data Array Product: 256 level/0.13 n  UNU      UNU      5        UNU      UNU      UNU      
+67   99    DV    Base Velocity Data Array Product: 256 level/0.13 n  UNU      UNU      9        UNU      UNU      UNU      
+68   99    DV    Base Velocity Data Array Product: 256 level/0.13 n  UNU      UNU      13       UNU      UNU      UNU      
+69   99    DV    Base Velocity Data Array Product: 256 level/0.13 n  UNU      UNU      18       UNU      UNU      UNU      
+70   99    DV    Base Velocity Data Array Product: 256 level/0.13 n  UNU      UNU      24       UNU      UNU      UNU      
+71   99    DV    Base Velocity Data Array Product: 256 level/0.13 n  UNU      UNU      31       UNU      UNU      UNU      
+72   99    DV    Base Velocity Data Array Product: 256 level/0.13 n  UNU      UNU      40       UNU      UNU      UNU      
+73   78    OHP   Surface Rainfall Accumulation (1 hr): 16 level/1.1  UNU      UNU      UNU      UNU      UNU      UNU      
+74   79    THP   Surface Rainfall Accumulation (3 hr): 16 level/1.1  UNU      UNU      UNU      UNU      UNU      UNU      
+75   80    STP   Storm Total Rainfall Accumulation: 16 level/1.1 nm  UNU      UNU      UNU      UNU      UNU      UNU      
+76   81    DPA   Hourly Digital Precip Array: 256 level              UNU      UNU      UNU      UNU      UNU      UNU      
+77   82    SPD   Supplemental Precipitation Data                     UNU      UNU      UNU      UNU      UNU      UNU      
+78   84    VAD   Velocity Azimuth Display: 8 level/5 kts             UNU      UNU      15       UNU      UNU      UNU      
+79   113   PRC   Power Removed Control: 12 level/0.13 nm             UNU      UNU      5        UNU      UNU      UNU      
+80   113   PRC   Power Removed Control: 12 level/0.13 nm             UNU      UNU      9        UNU      UNU      UNU      
+81   113   PRC   Power Removed Control: 12 level/0.13 nm             UNU      UNU      13       UNU      UNU      UNU      
+82   113   PRC   Power Removed Control: 12 level/0.13 nm             UNU      UNU      18       UNU      UNU      UNU      
+83   113   PRC   Power Removed Control: 12 level/0.13 nm             UNU      UNU      24       UNU      UNU      UNU      
+84   113   PRC   Power Removed Control: 12 level/0.13 nm             UNU      UNU      31       UNU      UNU      UNU      
+85   113   PRC   Power Removed Control: 12 level/0.13 nm             UNU      UNU      40       UNU      UNU      UNU      
+86   90    LRM   Layer Composite Reflectivity (Layer 3 Maximum): 8   UNU      UNU      UNU      UNU      UNU      UNU      
+87   97    CRE   Composite Reflectivity Edited for AP: 16 level/0.5  UNU      UNU      UNU      UNU      UNU      UNU      
+88   98    CRE   Composite Reflectivity Edited for AP: 16 level/2.2  UNU      UNU      UNU      UNU      UNU      UNU      
+89   74    RCM   Radar Coded Message                                 UNU      UNU      UNU      UNU      UNU      UNU      
+90   132   CLR   Clutter Likelihood Reflectivity: 11 level/0.54 nm   UNU      UNU      5        UNU      UNU      UNU      
+91   132   CLR   Clutter Likelihood Reflectivity: 11 level/0.54 nm   UNU      UNU      9        UNU      UNU      UNU      
+92   132   CLR   Clutter Likelihood Reflectivity: 11 level/0.54 nm   UNU      UNU      13       UNU      UNU      UNU      
+93   132   CLR   Clutter Likelihood Reflectivity: 11 level/0.54 nm   UNU      UNU      18       UNU      UNU      UNU      
+94   132   CLR   Clutter Likelihood Reflectivity: 11 level/0.54 nm   UNU      UNU      24       UNU      UNU      UNU      
+95   132   CLR   Clutter Likelihood Reflectivity: 11 level/0.54 nm   UNU      UNU      31       UNU      UNU      UNU      
+96   132   CLR   Clutter Likelihood Reflectivity: 11 level/0.54 nm   UNU      UNU      40       UNU      UNU      UNU      
+97   133   CLD   Clutter Likelihood Doppler: 12 level/0.54 nm        UNU      UNU      5        UNU      UNU      UNU      
+98   133   CLD   Clutter Likelihood Doppler: 12 level/0.54 nm        UNU      UNU      9        UNU      UNU      UNU      
+99   133   CLD   Clutter Likelihood Doppler: 12 level/0.54 nm        UNU      UNU      13       UNU      UNU      UNU      
+100  133   CLD   Clutter Likelihood Doppler: 12 level/0.54 nm        UNU      UNU      18       UNU      UNU      UNU      
+101  133   CLD   Clutter Likelihood Doppler: 12 level/0.54 nm        UNU      UNU      24       UNU      UNU      UNU      
+102  133   CLD   Clutter Likelihood Doppler: 12 level/0.54 nm        UNU      UNU      31       UNU      UNU      UNU      
+103  133   CLD   Clutter Likelihood Doppler: 12 level/0.54 nm        UNU      UNU      40       UNU      UNU      UNU      
+104  134   DVL   High Resolution Digital VIL: 256 level/0.54 nm      UNU      UNU      UNU      UNU      UNU      UNU      
+105  135   EET   Enhanced Echo Tops: 71 level/0.54 nm                UNU      UNU      UNU      UNU      UNU      UNU      
+106  137   ULR   User Selectable Layer Composite Reflectivity (Maxi  0        0        UNU      UNU      UNU      UNU      
+107  138   DSP   Digital Storm Total Rainfall Accumulation: 256 lev  UNU      UNU      UNU      UNU      UNU      UNU      
+108  140   GFM   Gust Front MIGFA                                    UNU      UNU      UNU      UNU      UNU      UNU      
+109  141   MD    Mesocyclone Detection Product                       UNU      UNU      UNU      UNU      UNU      UNU      
+110  143   TRU   Tornado Detection Rapid Update Product              UNU      UNU      5        UNU      UNU      UNU      
+111  143   TRU   Tornado Detection Rapid Update Product              UNU      UNU      9        UNU      UNU      UNU      
+112  143   TRU   Tornado Detection Rapid Update Product              UNU      UNU      13       UNU      UNU      UNU      
+113  143   TRU   Tornado Detection Rapid Update Product              UNU      UNU      18       UNU      UNU      UNU      
+114  143   TRU   Tornado Detection Rapid Update Product              UNU      UNU      24       UNU      UNU      UNU      
+115  143   TRU   Tornado Detection Rapid Update Product              UNU      UNU      31       UNU      UNU      UNU      
+116  143   TRU   Tornado Detection Rapid Update Product              UNU      UNU      40       UNU      UNU      UNU      
+117  144   OSW   One-hour Snow Accum (Water Equiv.): 16 level/0.54   UNU      UNU      UNU      UNU      UNU      UNU      
+118  145   OSD   One-hour Snow Accum (Depth): 16 level/0.54 nm       UNU      UNU      UNU      UNU      UNU      UNU      
+119  146   SSW   Storm Total Snow Accum (Water Equiv.): 16 level/0.  UNU      UNU      UNU      UNU      UNU      UNU      
+120  147   SSD   Storm Total Snow Accum (Depth): 16 level/0.54 nm    UNU      UNU      UNU      UNU      UNU      UNU      
+121  149   DMD   Mesocyclone Detection Data Array Product            UNU      UNU      5        UNU      UNU      UNU      
+122  149   DMD   Mesocyclone Detection Data Array Product            UNU      UNU      9        UNU      UNU      UNU      
+123  149   DMD   Mesocyclone Detection Data Array Product            UNU      UNU      13       UNU      UNU      UNU      
+124  149   DMD   Mesocyclone Detection Data Array Product            UNU      UNU      18       UNU      UNU      UNU      
+125  149   DMD   Mesocyclone Detection Data Array Product            UNU      UNU      24       UNU      UNU      UNU      
+126  149   DMD   Mesocyclone Detection Data Array Product            UNU      UNU      31       UNU      UNU      UNU      
+127  149   DMD   Mesocyclone Detection Data Array Product            UNU      UNU      40       UNU      UNU      UNU      
+128  150   USW   User Selectable Snow Accum (Water Equiv.): 16 leve  0        0        UNU      UNU      UNU      UNU      
+129  151   USD   User Selectable Snow Accum (Depth): 16 level/0.54   0        0        UNU      UNU      UNU      UNU      
+130  153   SDR   Super Resolution Reflectivity Data Array Product:   UNU      UNU      5        UNU      UNU      UNU      
+131  153   SDR   Super Resolution Reflectivity Data Array Product:   UNU      UNU      9        UNU      UNU      UNU      
+132  153   SDR   Super Resolution Reflectivity Data Array Product:   UNU      UNU      13       UNU      UNU      UNU      
+133  153   SDR   Super Resolution Reflectivity Data Array Product:   UNU      UNU      18       UNU      UNU      UNU      
+134  153   SDR   Super Resolution Reflectivity Data Array Product:   UNU      UNU      24       UNU      UNU      UNU      
+135  153   SDR   Super Resolution Reflectivity Data Array Product:   UNU      UNU      31       UNU      UNU      UNU      
+136  153   SDR   Super Resolution Reflectivity Data Array Product:   UNU      UNU      40       UNU      UNU      UNU      
+137  154   SDV   Super Resolution Velocity Data Array Product: 256   UNU      UNU      5        UNU      UNU      UNU      
+138  154   SDV   Super Resolution Velocity Data Array Product: 256   UNU      UNU      9        UNU      UNU      UNU      
+139  154   SDV   Super Resolution Velocity Data Array Product: 256   UNU      UNU      13       UNU      UNU      UNU      
+140  154   SDV   Super Resolution Velocity Data Array Product: 256   UNU      UNU      18       UNU      UNU      UNU      
+141  154   SDV   Super Resolution Velocity Data Array Product: 256   UNU      UNU      24       UNU      UNU      UNU      
+142  154   SDV   Super Resolution Velocity Data Array Product: 256   UNU      UNU      31       UNU      UNU      UNU      
+143  154   SDV   Super Resolution Velocity Data Array Product: 256   UNU      UNU      40       UNU      UNU      UNU      
+144  155   SDW   Super Resolution Spectrum Width Data Array Product  UNU      UNU      5        UNU      UNU      UNU      
+145  155   SDW   Super Resolution Spectrum Width Data Array Product  UNU      UNU      9        UNU      UNU      UNU      
+146  155   SDW   Super Resolution Spectrum Width Data Array Product  UNU      UNU      13       UNU      UNU      UNU      
+147  155   SDW   Super Resolution Spectrum Width Data Array Product  UNU      UNU      18       UNU      UNU      UNU      
+148  155   SDW   Super Resolution Spectrum Width Data Array Product  UNU      UNU      24       UNU      UNU      UNU      
+149  155   SDW   Super Resolution Spectrum Width Data Array Product  UNU      UNU      31       UNU      UNU      UNU      
+150  155   SDW   Super Resolution Spectrum Width Data Array Product  UNU      UNU      40       UNU      UNU      UNU      
+151  159   DZD   Differential Reflectivity Data Array Product: 256   UNU      UNU      5        UNU      UNU      UNU      
+152  159   DZD   Differential Reflectivity Data Array Product: 256   UNU      UNU      9        UNU      UNU      UNU      
+153  159   DZD   Differential Reflectivity Data Array Product: 256   UNU      UNU      13       UNU      UNU      UNU      
+154  159   DZD   Differential Reflectivity Data Array Product: 256   UNU      UNU      18       UNU      UNU      UNU      
+155  159   DZD   Differential Reflectivity Data Array Product: 256   UNU      UNU      24       UNU      UNU      UNU      
+156  159   DZD   Differential Reflectivity Data Array Product: 256   UNU      UNU      31       UNU      UNU      UNU      
+157  159   DZD   Differential Reflectivity Data Array Product: 256   UNU      UNU      40       UNU      UNU      UNU      
+158  161   DCC   Correlation Coefficient Data Array Product: 256 le  UNU      UNU      5        UNU      UNU      UNU      
+159  161   DCC   Correlation Coefficient Data Array Product: 256 le  UNU      UNU      9        UNU      UNU      UNU      
+160  161   DCC   Correlation Coefficient Data Array Product: 256 le  UNU      UNU      13       UNU      UNU      UNU      
+161  161   DCC   Correlation Coefficient Data Array Product: 256 le  UNU      UNU      18       UNU      UNU      UNU      
+162  161   DCC   Correlation Coefficient Data Array Product: 256 le  UNU      UNU      24       UNU      UNU      UNU      
+163  161   DCC   Correlation Coefficient Data Array Product: 256 le  UNU      UNU      31       UNU      UNU      UNU      
+164  161   DCC   Correlation Coefficient Data Array Product: 256 le  UNU      UNU      40       UNU      UNU      UNU      
+165  163   DKD   Specific Differential Phase Data Array Product: 25  UNU      UNU      5        UNU      UNU      UNU      
+166  163   DKD   Specific Differential Phase Data Array Product: 25  UNU      UNU      9        UNU      UNU      UNU      
+167  163   DKD   Specific Differential Phase Data Array Product: 25  UNU      UNU      13       UNU      UNU      UNU      
+168  163   DKD   Specific Differential Phase Data Array Product: 25  UNU      UNU      18       UNU      UNU      UNU      
+169  163   DKD   Specific Differential Phase Data Array Product: 25  UNU      UNU      24       UNU      UNU      UNU      
+170  163   DKD   Specific Differential Phase Data Array Product: 25  UNU      UNU      31       UNU      UNU      UNU      
+171  163   DKD   Specific Differential Phase Data Array Product: 25  UNU      UNU      40       UNU      UNU      UNU      
+172  165   DHC   Hydrometeor Classification Data Array Product: 256  UNU      UNU      5        UNU      UNU      UNU      
+173  165   DHC   Hydrometeor Classification Data Array Product: 256  UNU      UNU      9        UNU      UNU      UNU      
+174  165   DHC   Hydrometeor Classification Data Array Product: 256  UNU      UNU      13       UNU      UNU      UNU      
+175  165   DHC   Hydrometeor Classification Data Array Product: 256  UNU      UNU      18       UNU      UNU      UNU      
+176  165   DHC   Hydrometeor Classification Data Array Product: 256  UNU      UNU      24       UNU      UNU      UNU      
+177  165   DHC   Hydrometeor Classification Data Array Product: 256  UNU      UNU      31       UNU      UNU      UNU      
+178  165   DHC   Hydrometeor Classification Data Array Product: 256  UNU      UNU      40       UNU      UNU      UNU      
+179  166   ML    Melting Layer Contours: 4 contours/0.13 nm          UNU      UNU      5        UNU      UNU      UNU      
+180  166   ML    Melting Layer Contours: 4 contours/0.13 nm          UNU      UNU      9        UNU      UNU      UNU      
+181  166   ML    Melting Layer Contours: 4 contours/0.13 nm          UNU      UNU      13       UNU      UNU      UNU      
+182  166   ML    Melting Layer Contours: 4 contours/0.13 nm          UNU      UNU      18       UNU      UNU      UNU      
+183  166   ML    Melting Layer Contours: 4 contours/0.13 nm          UNU      UNU      24       UNU      UNU      UNU      
+184  166   ML    Melting Layer Contours: 4 contours/0.13 nm          UNU      UNU      31       UNU      UNU      UNU      
+185  166   ML    Melting Layer Contours: 4 contours/0.13 nm          UNU      UNU      40       UNU      UNU      UNU      
+186  167   SDC   Super Resolution Correlation Coef Data Array Produ  UNU      UNU      5        UNU      UNU      UNU      
+187  167   SDC   Super Resolution Correlation Coef Data Array Produ  UNU      UNU      9        UNU      UNU      UNU      
+188  167   SDC   Super Resolution Correlation Coef Data Array Produ  UNU      UNU      13       UNU      UNU      UNU      
+189  167   SDC   Super Resolution Correlation Coef Data Array Produ  UNU      UNU      18       UNU      UNU      UNU      
+190  167   SDC   Super Resolution Correlation Coef Data Array Produ  UNU      UNU      24       UNU      UNU      UNU      
+191  167   SDC   Super Resolution Correlation Coef Data Array Produ  UNU      UNU      31       UNU      UNU      UNU      
+192  167   SDC   Super Resolution Correlation Coef Data Array Produ  UNU      UNU      40       UNU      UNU      UNU      
+193  168   SDP   Super Resolution Differential Phase Data Array Pro  UNU      UNU      5        UNU      UNU      UNU      
+194  168   SDP   Super Resolution Differential Phase Data Array Pro  UNU      UNU      9        UNU      UNU      UNU      
+195  168   SDP   Super Resolution Differential Phase Data Array Pro  UNU      UNU      13       UNU      UNU      UNU      
+196  168   SDP   Super Resolution Differential Phase Data Array Pro  UNU      UNU      18       UNU      UNU      UNU      
+197  168   SDP   Super Resolution Differential Phase Data Array Pro  UNU      UNU      24       UNU      UNU      UNU      
+198  168   SDP   Super Resolution Differential Phase Data Array Pro  UNU      UNU      31       UNU      UNU      UNU      
+199  168   SDP   Super Resolution Differential Phase Data Array Pro  UNU      UNU      40       UNU      UNU      UNU      
+200  169   OHA   Dual Pol One Hour Accumulation 16 Data Levels       UNU      UNU      UNU      UNU      UNU      UNU      
+201  170   DAA   Dual Pol Digital Accumulation Array 256 Data Level  UNU      UNU      UNU      UNU      UNU      UNU      
+202  172   DSA   Dual Pol Digital Storm Total Accumulation 256 Data  UNU      UNU      UNU      UNU      UNU      UNU      
+203  173   DUA   Dual Pol Digital User Selectable Accumulation Prod  0        0        UNU      UNU      UNU      UNU      
+204  174   DOD   Dual Pol Digital One-Hour Difference Accum 256 Dat  UNU      UNU      UNU      UNU      UNU      UNU      
+205  175   DSD   Dual Pol Digital Storm Total Difference Accum 256   UNU      UNU      UNU      UNU      UNU      UNU      
+206  176   DPR   Digital Precipitation Rate Data: 65536 level/ 0.13  UNU      UNU      UNU      UNU      UNU      UNU      
+207  177   HHC   Hybrid Hydrometeor Classification Data Array Produ  UNU      UNU      UNU      UNU      UNU      UNU      
+208  178   IHL   Icing Hazard Level                                  UNU      UNU      UNU      UNU      UNU      UNU      
+209  179   HHL   Hail Hazard Layer                                   UNU      UNU      UNU      UNU      UNU      UNU      
+210  193   SRQ   SR Base Refl Data Array Edited with DQA: 256 level  UNU      UNU      5        UNU      UNU      UNU      
+211  193   SRQ   SR Base Refl Data Array Edited with DQA: 256 level  UNU      UNU      9        UNU      UNU      UNU      
+212  193   SRQ   SR Base Refl Data Array Edited with DQA: 256 level  UNU      UNU      13       UNU      UNU      UNU      
+213  193   SRQ   SR Base Refl Data Array Edited with DQA: 256 level  UNU      UNU      18       UNU      UNU      UNU      
+214  193   SRQ   SR Base Refl Data Array Edited with DQA: 256 level  UNU      UNU      24       UNU      UNU      UNU      
+215  193   SRQ   SR Base Refl Data Array Edited with DQA: 256 level  UNU      UNU      31       UNU      UNU      UNU      
+216  193   SRQ   SR Base Refl Data Array Edited with DQA: 256 level  UNU      UNU      40       UNU      UNU      UNU      
+217  196   MBA   MicroBurst Detection                                0        UNU      UNU      UNU      UNU      UNU      
+218  1965  AHC   Aviation Hydrometeor Classification Data Array Pro  UNU      UNU      5        UNU      UNU      UNU      
+219  1965  AHC   Aviation Hydrometeor Classification Data Array Pro  UNU      UNU      9        UNU      UNU      UNU      
+220  1965  AHC   Aviation Hydrometeor Classification Data Array Pro  UNU      UNU      13       UNU      UNU      UNU      
+221  1965  AHC   Aviation Hydrometeor Classification Data Array Pro  UNU      UNU      18       UNU      UNU      UNU      
+222  1965  AHC   Aviation Hydrometeor Classification Data Array Pro  UNU      UNU      24       UNU      UNU      UNU      
+223  1965  AHC   Aviation Hydrometeor Classification Data Array Pro  UNU      UNU      31       UNU      UNU      UNU      
+224  1965  AHC   Aviation Hydrometeor Classification Data Array Pro  UNU      UNU      40       UNU      UNU      UNU      
