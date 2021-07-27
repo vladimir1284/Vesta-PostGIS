@@ -3,13 +3,13 @@ Created on 13/04/2013
 
 @author: vladimir
 '''
-from Package import Package
+
 import struct, pylab
 import logging
 
 logger = logging.getLogger("Package_21")
 
-class Package_21(Package):
+class Package_21:
     """
     Figure 3-15. Cell Trend Data Packet - Packet Code 21 (Sheet 1)
     page 3-117. Document Number 2620001L
@@ -23,7 +23,7 @@ class Package_21(Package):
         '''
         
         
-        cell_id = binaryfile.read(2)
+        cell_id = binaryfile.read(2).decode("utf-8") 
         
         self.cell = Cell_trend(cell_id)
         
@@ -35,7 +35,7 @@ class Package_21(Package):
         self.Ipos = Ipos/8
         self.Jpos = Jpos/8
          
-        for i in xrange(8):
+        for i in range(8):
             trend_header = struct.unpack('>h2b',binaryfile.read(4))
             trend_code = trend_header[0]    # Indicates trend data type to follow:
                                             #    1 = cell top

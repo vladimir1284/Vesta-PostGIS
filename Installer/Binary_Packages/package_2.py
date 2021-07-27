@@ -3,13 +3,13 @@ Created on 13/04/2013
 
 @author: vladimir
 '''
-from Binary_Packages.Package import Package
+
 from Binary_Packages import read_half
 import logging
 
 logger = logging.getLogger("Package_2")
 
-class Package_2(Package):
+class Package_2:
     """
     Figure 3-8b. Text and Special Symbol Packets - Packet Code 2 (Sheet 3)
     page 3-97. Document Number 2620001L

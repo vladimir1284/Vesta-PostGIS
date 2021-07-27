@@ -24,12 +24,12 @@ class StTabularAlphanumeric:
         u = 0
         count = 0
         self.cell_location = {} # cell_id -> [azimut, range]
-        for i in xrange(self.number_of_pages):
+        for i in range(self.number_of_pages):
             while True:
                 num = read_half(self.gp.binaryfile)  # num of chars in current line
                 if num == -1 : # Romper si llega al final
                     break 
-                line = self.gp.binaryfile.read(num)                    
+                line = self.gp.binaryfile.read(num).decode("utf-8")                   
                 if (line.find("ADAPTATION") != -1 or 
                     is_adata):  
                     is_adata = True                  
@@ -52,10 +52,10 @@ class StTabularAlphanumeric:
                                 self.cell_location.setdefault(a[1].split()[0],[0, 0])
                     self.gp.data += line +"\n"
 
-        f = file("adata.txt",'w')
+        f = open("adata.txt",'w')
         f.write(self.gp.adata)
         f.close()
-        f = file("data.txt",'w')
+        f = open("data.txt",'w')
         f.write(self.gp.data)
         f.close()            
                 

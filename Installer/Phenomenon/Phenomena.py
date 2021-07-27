@@ -3,8 +3,6 @@ Created on 11/04/2013
 
 @author: vladimir
 '''
-
-import pyproj as pj  # @UnresolvedImport
 import logging
 
 logger = logging.getLogger("Phenomena")

@@ -6,11 +6,11 @@ Created on 12/04/2013
 from SiteConfiguration import FONT_SIZE
 from Binary_Packages import read_half
 import logging
-from Binary_Packages.Package import Package
+
 
 logger = logging.getLogger("Package_8")
 
-class Package_8(Package):
+class Package_8:
     '''
     Figure 3-8b. Text and Special Symbol Packets - Packet Code 8 (Sheet 2)
     page 3-96. Document Number 2620001L

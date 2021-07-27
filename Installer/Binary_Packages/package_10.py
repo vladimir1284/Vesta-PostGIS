@@ -3,14 +3,13 @@ Created on 16/04/2013
 
 @author: vladimir
 '''
-from Binary_Packages.Package import Package
 from Binary_Packages import read_half
 import logging
 import pylab
 
 logger = logging.getLogger("Package_10")
 
-class Package_10(Package):
+class Package_10():
     '''
     Figure 3-8. Unlinked Vector Packet - Packet Code 10 (Sheet 2)
     page 3-89. Document Number 2620001L
@@ -35,7 +34,7 @@ class Package_10(Package):
     def plot(self, axes, plt):
         logger.debug('Color Level: %i' % self.color)
         cl = plt.color(self.color)
-        for i in xrange(self.num_vectors):
+        for i in range(self.num_vectors):
             begI=read_half(self.binaryfile)
             begJ=read_half(self.binaryfile)
             endI=read_half(self.binaryfile)

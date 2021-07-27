@@ -3,14 +3,14 @@ Created on 11/04/2013
 
 @author: vladimir
 '''
-from Binary_Packages.Package import Package
-from Binary_Packages import read_half, read_half_unsigned
+
+from Binary_Packages import read_half
 from Phenomenon.StromCell import StormCell
 import logging
 
 logger = logging.getLogger("Package_15")
 
-class Package_15(Package):
+class Package_15:
     '''
     Figure 3-14. Special Graphic Symbol Packet - Packet Codes 15,
     19, 23, 24 and 25 (Sheet 2)
@@ -31,7 +31,7 @@ class Package_15(Package):
   
         logger.debug("Packet 15: Length=%4hd  Number Included=%hd" % (length,num))
 
-#             for i in xrange(num):
+#             for i in range(num):
 #                 ipos=read_half(binaryfile)
 #                 jpos=read_half(binaryfile)
 #                 a=binaryfile.read(1)

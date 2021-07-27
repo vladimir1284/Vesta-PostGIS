@@ -27,7 +27,7 @@ class Cell_trend_data:
         block_len =  read_half(binaryfile)
         num_vols =  read_byte(binaryfile)
         lts_vol_ptr = read_byte(binaryfile)
-        for i in xrange(num_vols):
+        for i in range(num_vols):
             min = read_half(binaryfile)
             self.time.append(min)
             self.times.append('%02i%02i' % (min/60, pylab.mod(min,60)))
@@ -169,7 +169,7 @@ class Cell_trend_data:
                 pylab.plot(cell_trend.centroid_hgt, 'mD-', label='CENT HT', linewidth=2)
     
                 N = len(cell_trend.cell_top) # Cantidad de Volumenes
-                for i in xrange(N):
+                for i in range(N):
                     y = (cell_trend.cell_top[i] + cell_trend.cell_base[i])/2.
                     yerr = (cell_trend.cell_top[i] - cell_trend.cell_base[i])
                     #print (y,yerr)

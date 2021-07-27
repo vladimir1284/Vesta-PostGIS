@@ -4,18 +4,18 @@ Created on 08/04/2013
 @author: vladimir
 '''
 from bz2 import BZ2Decompressor
-from StringIO import StringIO
+from io import BytesIO
 import struct
 import matplotlib
+from numpy import matrix
 matplotlib.use('Agg')
 from ProductBlocks import read_half_unsigned
 from SiteConfiguration import OFFSET
 import logging
 import pylab
-from osgeo import gdal
-from osgeo import osr
 import os
-os.environ['GDAL_DATA'] = " /usr/share/gdal"
+import errno
+from PIL import Image
 
 '''
         ['lbj';   'pde';   'csb';   'psj';   'cmw';   'pln';   'gpd';   'hlg';   'cnr'   ];
@@ -76,7 +76,7 @@ class SymbologyBlock:
         if gp.pp.compressed:
             decompressor = BZ2Decompressor()
             symb_string = decompressor.decompress(gp.binaryfile.read())
-            gp.binaryfile = StringIO(symb_string)  # Handle string as file         
+            gp.binaryfile = BytesIO(symb_string)  # Handle string as file         
 
         blockHeader = struct.unpack('>hHiH', gp.binaryfile.read(10))
         self.divider = blockHeader[0]  # value of -1 used to delineate the following from 
@@ -87,7 +87,7 @@ class SymbologyBlock:
         self.n_layers = blockHeader[3]  # number of data layers obtained in this block; 
                                             # 1 - 15     
         
-        # for i in xrange(self.n_layers):
+        # for i in range(self.n_layers):
         layerHeader = struct.unpack('>hi', gp.binaryfile.read(6))  
         layer_divider = layerHeader[0]  # value of -1 used to delineate one data layer 
                                         # from another 
@@ -123,30 +123,22 @@ class SymbologyBlock:
                     if exc.errno != errno.EEXIST:
                         raise
 
-            if gp.pp.geographic:                
-                # Image generation
-                nPixels = int(1e3 * gp.pp.range / gp.pp.resolution)
-                # create the 1-band raster file 
-                dst_ds = gdal.GetDriverByName('MEM').Create('', nPixels, nPixels, 1, gdal.GDT_Byte)  
-                # Load data and colors
-                band = dst_ds.GetRasterBand(1)
-                band.SetNoDataValue(0)             
-                colors = VestaColorTable('palettes/' + gp.pp.palette)
-                band.SetRasterColorTable(colors)
-                band.SetRasterColorInterpretation(gdal.GCI_PaletteIndex)
+            if gp.pp.geographic:                      
                 # Repeat for each package in the layer
                 while (actual_position < end_position):
                     packet_code = read_half_unsigned(gp.binaryfile)
                     package = PACKAGES[packet_code](gp)            
-                    package.writeData(band)   # write r-band to the raster
+                    s = package.writeData()   # return image matrix
                     actual_position = gp.binaryfile.tell() 
+                    
                 # write to disk
-                dst_driver = gdal.GetDriverByName('PNG')
-                dst_png = dst_driver.CreateCopy(dir_name + gp.file_name +'.png', dst_ds, strict=0)
-                dst_png.FlushCache()                     
-                band = None
-                dst_ds = None  
-                dst_png = None  
+                colors = VestaColorTable('palettes/' + gp.pp.palette)
+                img = Image.fromarray(s)
+                img = img.convert('P')
+                img.putpalette(colors.palette, rawmode='RGBA')
+                
+                img.save(dir_name + gp.file_name +'.png')
+
             else:
                 figureSize = (8, 8)  # Bigger for VAD & VWP
                 my_dpi = 150.0

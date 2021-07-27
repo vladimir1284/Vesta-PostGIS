@@ -3,14 +3,14 @@ Created on 12/04/2013
 
 @author: vladimir
 '''
-from Package import Package
+
 from Binary_Packages import read_half
 from Phenomenon.Mesocyclone import Mesocyclone
 import logging
 
 logger = logging.getLogger("Package_20")
 
-class Package_20(Package):
+class Package_20:
     '''
     Figure 3-14. Special Graphic Symbol Packet - Packet Code 20 (Sheet 4)
     page 3-116. Document Number 2620001L
@@ -25,7 +25,7 @@ class Package_20(Package):
         
         # in this packet there are 4 fields (8 bytes) to be 
         # written for each symbol        
-        for i in xrange(num):
+        for i in range(num):
             ipos=read_half(gp.binaryfile)
             jpos=read_half(gp.binaryfile)
             FeatureType=read_half(gp.binaryfile)

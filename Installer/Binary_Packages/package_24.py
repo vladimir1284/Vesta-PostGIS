@@ -3,14 +3,14 @@ Created on 16/04/2013
 
 @author: vladimir
 '''
-from Package import Package
+
 from Binary_Packages import read_half
 from Binary_Packages.package_6 import Package_6
 import logging
 
 logger = logging.getLogger("Package_24")
 
-class Package_24(Package):
+class Package_24:
     '''
     Figure 3-14. Special Graphic Symbol Packet - Packet Codes 15, 
     19, 23, 24 and 25 (Sheet 2)

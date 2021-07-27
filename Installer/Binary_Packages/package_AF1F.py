@@ -3,13 +3,13 @@ Created on 31/03/2013
 
 @author: vladimir
 '''
-from Package import * #@UnusedWildImport
-import numpy as np
 import logging
+import struct
+from Binary_Packages import polar_to_cart, np
 
 logger = logging.getLogger("Package_AF1F")
 
-class Package_AF1F(Package):
+class Package_AF1F:
     '''
     Figure 3-10. Radial Data Packet (16 Data Levels) - Packet Code AF1F (Sheet 1-2)
     page 3-103. Document Number 2620001L
@@ -27,7 +27,7 @@ class Package_AF1F(Package):
         
         self.radials = []
         
-        for i in xrange(radial_count):
+        for i in range(radial_count):
             halves = struct.unpack('>3h',binaryfile.read(6))
             num_rle_halfwords   = halves[0] # Two bytes count
             if (i==0):
@@ -43,19 +43,19 @@ class Package_AF1F(Package):
             data = struct.unpack(str(num_bytes)+'B',s)
  
             radial = []
-            for j in xrange(num_bytes):
+            for j in range(num_bytes):
                 c = data[j]
                 run = c/16 # Cantidad de celdas
                 val = c&0xf # Valor de las celdas               
-                #for k in xrange(run): radial.append(val)
+                #for k in range(run): radial.append(val)
                 # should be more efficient concatenate
                 radial = np.concatenate((radial,val*np.ones(run)))
                 
             self.radials.append(radial)
     
-    def writeData(self, band):       
+    def writeData(self):       
         polar_data = np.array(self.radials, dtype=np.uint8)
         limit = (1e3 * self.gp.pp.range  - self.gp.pp.resolution) / 2.0
         x = y = np.arange(-limit, limit+1, self.gp.pp.resolution)
         cart_data  = polar_to_cart(polar_data, self.ini_angle, 1, self.gp.pp.resolution, x, y)
-        band.WriteArray(cart_data)        
+        return cart_data        

@@ -12,14 +12,10 @@ from ImageUpload import ImageUpload
 from SiteConfiguration import OFFSET
 from ProductBlocks.StandAloneTabularAlphanumeric import StTabularAlphanumeric
 from Phenomenon.CellTrend import Cell_trend_data
-import pyproj as pj  # @UnresolvedImport
 
 import psycopg2 as pg
 from time import gmtime
-#import pyproj as pj  # @UnresolvedImport
-import logging
 import time
-import commands
 
 SECS_PER_DAY = 86400 # Number of seconds in a day
 
@@ -39,7 +35,7 @@ class GraphicProduct:
         start_time = time.time()
         self.RADAR_ID = RADAR_ID
         
-        self.binaryfile = file(binaryfilename,'r')
+        self.binaryfile = open(binaryfilename,'rb')
         self.images = []
         self.georeference = []
         self.adata = ''
@@ -75,9 +71,9 @@ class GraphicProduct:
                         self.vol_time.tm_mon,self.vol_time.tm_mday,
                         self.vol_time.tm_hour, self.vol_time.tm_min)
 
-        self.radar_pj = pj.Proj(proj="aeqd", lat_0=RADAR_LOCATIONS[RADAR_ID][0], 
-                                lon_0=RADAR_LOCATIONS[RADAR_ID][1], 
-                                datum="WGS84", units="m")
+        # self.radar_pj = pj.Proj(proj="aeqd", lat_0=RADAR_LOCATIONS[RADAR_ID][0], 
+        #                         lon_0=RADAR_LOCATIONS[RADAR_ID][1], 
+        #                         datum="WGS84", units="m")
         
         logger.debug('\nDir name:\t' + self.dirname +'\n'+
                      'File name:\t' + self.file_name +'\n'+
@@ -131,17 +127,17 @@ class GraphicProduct:
 #                                          'vesta_web_ftp', 
 #                                          'billar') # Connect if necessary
 #         for image in self.images:
-#             fig_file = file('images/'+self.RADAR_ID+'/'+image, 'rb')
+#             fig_file = open('images/'+self.RADAR_ID+'/'+image, 'rb')
 #             iu.upload(fig_file, image, self.dirname)
 #             if iu.ok:
-#                 commands.getoutput('rm images/'+self.RADAR_ID+'/'+image)
+#                 subprocess.getoutput('rm images/'+self.RADAR_ID+'/'+image)
 #         fig_file.close()
 #
 #         if self.pp.geographic:
-#             wfile = file('images/'+self.RADAR_ID+'/'+image+'w', 'rb')
+#             wfile = open('images/'+self.RADAR_ID+'/'+image+'w', 'rb')
 #             iu.upload(wfile, image+'w', self.dirname)
 #             if iu.ok:
-#                 commands.getoutput('rm images/'+self.RADAR_ID+'/'+image+'w')
+#                 subprocess.getoutput('rm images/'+self.RADAR_ID+'/'+image+'w')
 #             wfile.close()
 #
 #
@@ -156,7 +152,7 @@ class GraphicProduct:
 #             self.binaryfile.close()
 #
 #             start_ftp = time.time()
-#             pfile = file(binaryfilename,'rb')
+#             pfile = open(binaryfilename,'rb')
 #             if self.images: iu = ImageUpload('vesta-mosaic',
 #                                              'vesta_mosaico_ftp', 
 #                                              'ganador') # Connect if necessary

@@ -25,7 +25,7 @@ class TabularAlphanumericBlock:
         len_read = 0
         page_parse_error=False
         if (divider != -1) | (bid != 3):
-            print "TAB  ERROR\nERROR Entering TAB Block, Either entry offset\n is incorrect or TAB divider and ID are Incorrect"
+            print("TAB  ERROR\nERROR Entering TAB Block, Either entry offset\n is incorrect or TAB divider and ID are Incorrect")
         else:
             # advance offset pointer beyond the message header block and the
             # product description block
@@ -34,14 +34,13 @@ class TabularAlphanumericBlock:
             blok_divider = read_half(binaryfile)
             numpages = read_half(binaryfile)
             
-            for i in xrange(numpages):
+            for i in range(numpages):
                 adapt = False
                 
                 while True:
                     num = read_half(binaryfile)  # num of chars in current line
                     if num == -1 : break # Romper si llega al final
-                    line = binaryfile.read(num)
-#                     logger.debug(line)
+                    line = binaryfile.read(num).decode("utf-8") 
                     if (line.find("ADAPTATION") != -1) or \
                         (line.find("ADAPTABLE") != -1) or \
                         (line.find("ALTITUDES SELECTED") != -1) or adapt:
@@ -49,10 +48,10 @@ class TabularAlphanumericBlock:
                         gp.adata += line + '\n'
                     else:
                         gp.data += line + '\n'
-#             f = file("adata.txt",'w')
+#             f = open("adata.txt",'w')
 #             f.write(gp.adata)
 #             f.close()
-#             f = file("data.txt",'w')
+#             f = open("data.txt",'w')
 #             f.write(gp.data)
 #             f.close()   
 #                 else:                        

@@ -3,7 +3,7 @@ Created on 16/04/2013
 
 @author: vladimir
 '''
-from Binary_Packages.Package import Package
+
 from Binary_Packages import read_half
 import logging
 import pylab
@@ -11,7 +11,7 @@ from Palette import Palette
 
 logger = logging.getLogger("Package_4")
 
-class Package_4(Package):
+class Package_4:
     '''
     Figure 3-13. Wind Barb Data Packet - Packet Code 4
     page 3-112. Document Number 2620001L

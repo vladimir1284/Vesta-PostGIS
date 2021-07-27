@@ -4,12 +4,11 @@ Created on 12/04/2013
 @author: vladimir
 '''
 from Binary_Packages import read_half
-from Binary_Packages.Package import CUBAN_PJ, Package
 import logging
 
 logger = logging.getLogger("Package_6")
 
-class Package_6(Package):
+class Package_6:
     '''
     Figure 3-7 Linked Vector Packet - Packet Code 6 (Sheet 1)
     page 3-86. Document Number 2620001L
@@ -30,7 +29,7 @@ class Package_6(Package):
         logger.debug("Number of Vectors: %i" % num_vectors)        
         
         tmp = []            
-        for i in xrange(0,length,4):
+        for i in range(0,length,4):
             u = read_half(binaryfile)
             v = read_half(binaryfile)
             logger.debug("  I Starting Point: %hd   J Starting Point: %hd" % (u,v))

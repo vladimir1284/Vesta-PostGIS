@@ -33,4 +33,4 @@ class Tornado(Phenomena):
                 logger.error(self.DB_CONN.error) 
             except expression as identifier:
                 logger.error("There is no database connection")  
-#             print '\n In function commit from class Tornado\n'
+#             print ('\n In function commit from class Tornado\n')

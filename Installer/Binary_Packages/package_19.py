@@ -3,14 +3,14 @@ Created on 11/04/2013
 
 @author: vladimir
 '''
-from Package import Package
+
 from Binary_Packages import read_half
 from Phenomenon.Hail import Hail
 import logging
 
 logger = logging.getLogger("Package_19")
 
-class Package_19(Package):
+class Package_19:
     '''
     Figure 3-14. Special Graphic Symbol Packet - Packet Codes 15,
     19, 23, 24 and 25 (Sheet 2)

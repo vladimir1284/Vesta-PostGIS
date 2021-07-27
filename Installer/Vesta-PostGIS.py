@@ -1,4 +1,4 @@
-#!/opt/epd_free-7.3-1-rh5-x86/bin/python
+#!/usr/bin/python2.7
 # -*- coding: utf-8 -*-
 '''
 Created on 08/04/2013
@@ -8,7 +8,7 @@ Created on 08/04/2013
 import logging
 import traceback
 import sys
-import commands
+import subprocess
 
 from GraphicProduct import GraphicProduct
 RADAR_ID = 'CCMW'
@@ -40,7 +40,7 @@ if __name__ == '__main__':
     try:
         gp = GraphicProduct(filename, 'products_properties.xml', RADAR_ID)
         gp.upload()
-	commands.getoutput('rm %s' % filename)
+	subprocess.getoutput('rm %s' % filename)
     except:        
         class Myfile:
             def __init__(self):

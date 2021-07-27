@@ -3,14 +3,12 @@ Created on 16/04/2013
 
 @author: vladimir
 '''
-from Binary_Packages.Package import Package
 from Binary_Packages import read_half
 import logging
-import pylab
 
 logger = logging.getLogger("Package_9")
 
-class Package_9(Package):
+class Package_9:
     '''
     Figure 3-7 Linked Vector Packet - Packet Code 9 (Sheet 2)
     page 3-86. Document Number 2620001L
@@ -33,7 +31,7 @@ class Package_9(Package):
         self.i_ends = []
         self.j_ends = []
         
-        for i in xrange(num_vectors):
+        for i in range(num_vectors):
             self.i_ends.append(read_half(gp.binaryfile))
             self.j_ends.append(read_half(gp.binaryfile))
         
