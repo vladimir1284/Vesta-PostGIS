@@ -19,7 +19,7 @@ import time
 
 SECS_PER_DAY = 86400 # Number of seconds in a day
 
-PCODES = {94: 'DR_94', 38: 'CR_38', 41: 'ET_41', 62: 'SS_62', 58: 'STI_58'}
+PCODES = {94: 'DR_94', 99: 'DV_99', 155: 'SDW_155', 137: 'ULR_137', 62: 'SS_62', 58: 'STI_58'}
 
 logger = logging.getLogger("GraphicProduct")
 
@@ -92,7 +92,6 @@ class GraphicProduct:
                 self.sb = SymbologyBlock(self)
                 logger.debug('Parse Symbology Block: %ims' % int(1e3*(time.time()
                                                                       -start_sb)))
-                self.upload()
                 
         # Cell Trend data for SS
         if pcode == 62:

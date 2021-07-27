@@ -1,4 +1,4 @@
-#!/usr/bin/python2.7
+#!./vesta/bin/python
 # -*- coding: utf-8 -*-
 '''
 Created on 08/04/2013
@@ -40,7 +40,7 @@ if __name__ == '__main__':
     try:
         gp = GraphicProduct(filename, 'products_properties.xml', RADAR_ID)
         gp.upload()
-	subprocess.getoutput('rm %s' % filename)
+        # subprocess.getoutput('rm %s' % filename)
     except:        
         class Myfile:
             def __init__(self):
