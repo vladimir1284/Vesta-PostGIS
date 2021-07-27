@@ -182,7 +182,7 @@ orpgname,password,filepath,linkindex,orpgport);     */
     }
 
        /* get the file naming convention for the product files */
-    PROC_publish_naming_convention (2);
+    PROC_publish_naming_convention (1);
 
 //    if (PROC_get_product_dir () != NULL) {
 //       if ( (!Otr_script) && (!WMO_AWIPS_header_added) )

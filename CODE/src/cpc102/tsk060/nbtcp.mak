@@ -40,7 +40,7 @@ DEBUG_LOCALLIBS = $(LOCAL_LIBRARIES)
 
 # Architecture and debug or profiling tool dependent linker options for
 # lnux_x86
-lnux_x86_LD_OPTS =
+lnux_x86_LD_OPTS = -lz -lbz2 -lpthread
 
 lnux_x86_DEBUG_LD_OPTS = -lz -lbz2 -lpthread
 lnux_x86_GPROF_LD_OPTS = $(lnux_x86_DEBUG_LD_OPTS)
