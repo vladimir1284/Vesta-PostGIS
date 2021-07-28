@@ -104,20 +104,21 @@ class GraphicProduct:
         
        
 
-    def upload(self):        
-        query_str = """INSERT INTO public.vestaweb_rasterproduct(
-                    created, description_id, radar_id) VALUES 
-                    ('%s', (SELECT id from vestaweb_productdescription 
-                    WHERE pcode='%s'), (SELECT id from vestaweb_radar WHERE 
-                    radar_code='%s')) """ % (self.datetime, self.pcode,
-                                          self.RADAR_ID)
-        logger.debug(query_str)
-        try:      
-            cur = self.DB_CONN.cursor()
-            cur.execute(query_str)
-            self.DB_CONN.commit()
-        except (Exception, pg.DatabaseError) as error:
-            logger.error(error)
+    def upload(self):
+        if self.pp.geographic:
+            query_str = """INSERT INTO public.vestaweb_rasterproduct(
+                        created, description_id, radar_id) VALUES 
+                        ('%s', (SELECT id from vestaweb_productdescription 
+                        WHERE pcode='%s'), (SELECT id from vestaweb_radar WHERE 
+                        radar_code='%s')) """ % (self.datetime, self.pcode,
+                                              self.RADAR_ID)
+            logger.debug(query_str)
+            try:      
+                cur = self.DB_CONN.cursor()
+                cur.execute(query_str)
+                self.DB_CONN.commit()
+            except (Exception, pg.DatabaseError) as error:
+                logger.error(error)
 
         # Upload Images
 #         start_ftp = time.time()

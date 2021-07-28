@@ -30,23 +30,15 @@ class Package_15:
         num=length/6
   
         logger.debug("Packet 15: Length=%4hd  Number Included=%hd" % (length,num))
-
-#             for i in range(num):
-#                 ipos=read_half(binaryfile)
-#                 jpos=read_half(binaryfile)
-#                 a=binaryfile.read(1)
-#                 b=binaryfile.read(1)
-#     
-#                 
+               
 
         if (length == 6): # only one symbol
             ipos=read_half(binaryfile)
             jpos=read_half(binaryfile)
-            a=binaryfile.read(1)
-            b=binaryfile.read(1)
+            cell_id = binaryfile.read(2).decode("utf-8") 
             
-            logger.debug("  I Pos: %4hd  J Pos: %4hd  Storm ID: %s%s\n" % 
-                         (ipos,jpos,a,b))
+            logger.debug("  I Pos: %4hd  J Pos: %4hd  Storm ID: %s\n" % 
+                         (ipos,jpos,cell_id))
         else:
             logger.warning("More than one symbol in packet. Not handled.")
             
@@ -56,11 +48,11 @@ class Package_15:
                     gp.storm.commit()
             except:
                 pass
-            gp.storm = StormCell(ipos, jpos, '%s%s' % (a,b), gp)
+            gp.storm = StormCell(ipos, jpos, cell_id, gp)
             
         if gp.pdb.MH_msg_code == 59:
-            gp.hail.set_id('%s%s' % (a,b),ipos, jpos)
+            gp.hail.set_id(cell_id, ipos, jpos)
             
         if gp.pdb.MH_msg_code == 61:
-            gp.tornado.set_id('%s%s' % (a,b))
+            gp.tornado.set_id(cell_id)
             

@@ -60,40 +60,42 @@
 
 Default_prod_gen {
 # prod_id wx_modes gen_pr stor_reten  p1    p2    p3    p4    p5    p6
-      2       6	      1     180       UNU   UNU  01-45  UNU   UNU   UNU
-      4       2	      1     180       UNU   UNU  11-3   UNU   UNU   UNU
-      4       4	      1     180       UNU   UNU  11-3   UNU   UNU   UNU
-     10       6	      1     180       UNU   UNU  11-4   UNU   UNU   UNU
-     15       6	      1     180       UNU   UNU  01-45  UNU   UNU   UNU
-     23       6	      1     180       UNU   UNU   UNU   UNU   UNU   UNU
-     25       6	      1     180       UNU   UNU   UNU   UNU   UNU   UNU
+#      2       6	      1     180       UNU   UNU  01-45  UNU   UNU   UNU
+#      4       2	      1     180       UNU   UNU  11-3   UNU   UNU   UNU
+#      4       4	      1     180       UNU   UNU  11-3   UNU   UNU   UNU
+#     10       6	      1     180       UNU   UNU  11-4   UNU   UNU   UNU
+     10       6	      1     180       UNU   UNU  05   UNU   UNU   UNU
+#     15       6	      1     180       UNU   UNU  01-45  UNU   UNU   UNU
+#     23       6	      1     180       UNU   UNU   UNU   UNU   UNU   UNU
+#     25       6	      1     180       UNU   UNU   UNU   UNU   UNU   UNU
      29       2	      1     180       UNU   UNU   UNU   UNU   UNU   UNU
      33       2	      1     180       UNU   UNU   UNU   UNU   UNU   UNU
      35       6	      1     180       UNU   UNU   UNU   UNU   UNU   UNU
-     38       6	      1     180       UNU   UNU   UNU   UNU   UNU   UNU
-     39       2	      1     180       UNU   UNU   UNU   UNU   UNU   UNU
-     39       4	      1      60       UNU   UNU   UNU   UNU   UNU   UNU
-     44       6	      1     180       UNU   UNU   UNU   UNU   UNU   UNU
+#     38       6	      1     180       UNU   UNU   UNU   UNU   UNU   UNU
+#     39       2	      1     180       UNU   UNU   UNU   UNU   UNU   UNU
+#     39       4	      1      60       UNU   UNU   UNU   UNU   UNU   UNU
+#     44       6	      1     180       UNU   UNU   UNU   UNU   UNU   UNU
      49       2	      1     180       UNU   UNU   UNU   UNU   UNU   UNU
      51       2	      1     180       UNU   UNU   UNU   UNU   UNU   UNU
-     56       6	      1     180       12    24    UNU   UNU   UNU   UNU
+#     56       6	      1     180       12    24    UNU   UNU   UNU   UNU
      57       6	      1     180       UNU   UNU   UNU   UNU   UNU   UNU
-     68       6       1     180       UNU   UNU  01-45  -10   -10   UNU
+#     68       6       1     180       UNU   UNU  01-45  -10   -10   UNU
      80       2       1     180       UNU   UNU   UNU   UNU   UNU   UNU
      85       2       1     180       UNU   UNU   UNU   UNU   UNU   UNU
      85       4       1      60       UNU   UNU   UNU   UNU   UNU   UNU
-     94       6       1      30       UNU   UNU  10-0   UNU   UNU   UNU
-     99       6       1      30       UNU   UNU  10-0   UNU   UNU   UNU
+     94       6       1      30       UNU   UNU    05   UNU   UNU   UNU
+     99       6       1      30       UNU   UNU    05   UNU   UNU   UNU
     104       6       1     180       UNU   UNU   UNU   UNU   UNU   UNU
     105       2       1     180       UNU   UNU   UNU   UNU   UNU   UNU
     105       4       1     180       UNU   UNU   UNU   UNU   UNU   UNU
     106       6       1     180       UNU   UNU   UNU   UNU   UNU   UNU
-    107       2       1     180       UNU   UNU   UNU   UNU   UNU   UNU
-    107       4       1     180       UNU   UNU   UNU   UNU   UNU   UNU
+#    107       2       1     180       UNU   UNU   UNU   UNU   UNU   UNU
+#    107       4       1     180       UNU   UNU   UNU   UNU   UNU   UNU
     108       6       1     180       UNU   UNU   UNU   UNU   UNU   UNU
     109       6       1     180       UNU   UNU   UNU   UNU   UNU   UNU
-    117       2       1     180       UNU   UNU   UNU   UNU   UNU   UNU
-    117       4       1      60       UNU   UNU   UNU   UNU   UNU   UNU
+    110       6       1     180       UNU   UNU   5   UNU   UNU   UNU
+#    117       2       1     180       UNU   UNU   UNU   UNU   UNU   UNU
+#    117       4       1      60       UNU   UNU   UNU   UNU   UNU   UNU
     129       6       1     180       UNU   UNU   UNU   UNU   UNU   UNU
     132       6       1     180       UNU   UNU  11-1   UNU   UNU   UNU
     133       6       1     180       UNU   UNU  11-1   UNU   UNU   UNU
@@ -103,81 +105,87 @@ Default_prod_gen {
     138       6       1     180       UNU   UNU   UNU   UNU   UNU   UNU
     140       6       1     180       UNU   UNU   UNU   UNU   UNU   UNU
     141       6       1     180       UNU   UNU   UNU   UNU   UNU   UNU
-    143       6       1     180       UNU   UNU  10-0   UNU   UNU   UNU
-    143       6       1     180       UNU   UNU  10-3600 UNU   UNU   UNU
-    144       6       1     180       UNU   UNU   UNU   UNU   UNU   UNU
-    145       6       1     180       UNU   UNU   UNU   UNU   UNU   UNU
+#    143       6       1     180       UNU   UNU  10-0   UNU   UNU   UNU
+#    143       6       1     180       UNU   UNU  10-3600 UNU   UNU   UNU
+#    144       6       1     180       UNU   UNU   UNU   UNU   UNU   UNU
+#    145       6       1     180       UNU   UNU   UNU   UNU   UNU   UNU
     146       6       1     180       UNU   UNU   UNU   UNU   UNU   UNU
     147       6       1     180       UNU   UNU   UNU   UNU   UNU   UNU
-    149       6       1      30       UNU   UNU  10-0   UNU   UNU   UNU
-    149       6       1      30       UNU   UNU  10-3600 UNU   UNU   UNU
-    149       6       1      30       UNU   UNU  10-05  UNU   UNU   UNU
-    149       6       1      30       UNU   UNU  10-09  UNU   UNU   UNU
-    149       6       1      30       UNU   UNU  10-13  UNU   UNU   UNU
-    149       6       1      30       UNU   UNU  10-18  UNU   UNU   UNU
-    150       6       1     180       12    24    UNU   UNU   UNU   UNU
-    151       6       1     180       12    24    UNU   UNU   UNU   UNU
+    149       6       1     180       UNU   UNU   05    UNU   UNU   UNU
+#    149       6       1      30       UNU   UNU  10-0   UNU   UNU   UNU
+#    149       6       1      30       UNU   UNU  10-3600 UNU   UNU   UNU
+#    149       6       1      30       UNU   UNU  10-05  UNU   UNU   UNU
+#    149       6       1      30       UNU   UNU  10-09  UNU   UNU   UNU
+#    149       6       1      30       UNU   UNU  10-13  UNU   UNU   UNU
+#    149       6       1      30       UNU   UNU  10-18  UNU   UNU   UNU
+#    150       6       1     180       12    24    UNU   UNU   UNU   UNU
+#    151       6       1     180       12    24    UNU   UNU   UNU   UNU
     152       6       1     360       UNU   UNU   UNU   UNU   UNU   UNU
-    153       6       1      30       UNU   UNU  01-18  UNU   UNU   UNU
-    153       6       1      30       UNU   UNU  10-3600 UNU   UNU   UNU
-    153       6       1      30       UNU   UNU  10-05  UNU   UNU   UNU
-    153       6       1      30       UNU   UNU  10-09  UNU   UNU   UNU
-    153       6       1      30       UNU   UNU  10-13  UNU   UNU   UNU
-    153       6       1      30       UNU   UNU  10-18  UNU   UNU   UNU
-    154       6       1      30       UNU   UNU  01-18  UNU   UNU   UNU
-    154       6       1      30       UNU   UNU  10-3600 UNU   UNU   UNU
-    153       6       1      30       UNU   UNU  10-05  UNU   UNU   UNU
-    154       6       1      30       UNU   UNU  10-09  UNU   UNU   UNU
-    154       6       1      30       UNU   UNU  10-13  UNU   UNU   UNU
-    154       6       1      30       UNU   UNU  10-18  UNU   UNU   UNU
-    155       6       1      30       UNU   UNU  01-18  UNU   UNU   UNU
-    155       6       1      30       UNU   UNU  10-3600 UNU   UNU   UNU
-    155       6       1      30       UNU   UNU  10-05  UNU   UNU   UNU
-    155       6       1      30       UNU   UNU  10-09  UNU   UNU   UNU
-    155       6       1      30       UNU   UNU  10-13  UNU   UNU   UNU
-    155       6       1      30       UNU   UNU  10-18  UNU   UNU   UNU
-    159       6       1     180       UNU   UNU  10-0   UNU   UNU   UNU
-    159       6       1     180       UNU   UNU  10-3600 UNU   UNU   UNU
-    159       6       1     180       UNU   UNU  10-05  UNU   UNU   UNU
-    159       6       1     180       UNU   UNU  10-09  UNU   UNU   UNU
-    159       6       1     180       UNU   UNU  10-13  UNU   UNU   UNU
-    159       6       1     180       UNU   UNU  10-18  UNU   UNU   UNU
-    161       6       1     180       UNU   UNU  10-0   UNU   UNU   UNU
-    161       6       1     180       UNU   UNU  10-3600 UNU   UNU   UNU
-    161       6       1     180       UNU   UNU  10-05  UNU   UNU   UNU
-    161       6       1     180       UNU   UNU  10-09  UNU   UNU   UNU
-    161       6       1     180       UNU   UNU  10-13  UNU   UNU   UNU
-    161       6       1     180       UNU   UNU  10-18  UNU   UNU   UNU
-    163       6       1     180       UNU   UNU  10-0   UNU   UNU   UNU
-    163       6       1     180       UNU   UNU  10-3600 UNU   UNU   UNU
-    163       6       1     180       UNU   UNU  10-05  UNU   UNU   UNU
-    163       6       1     180       UNU   UNU  10-09  UNU   UNU   UNU
-    163       6       1     180       UNU   UNU  10-13  UNU   UNU   UNU
-    163       6       1     180       UNU   UNU  10-18  UNU   UNU   UNU
-    165       6       1     180       UNU   UNU  10-0   UNU   UNU   UNU
-    165       6       1     180       UNU   UNU  10-3600 UNU   UNU   UNU
-    165       6       1     180       UNU   UNU  10-05  UNU   UNU   UNU
-    165       6       1     180       UNU   UNU  10-09  UNU   UNU   UNU
-    165       6       1     180       UNU   UNU  10-13  UNU   UNU   UNU
-    165       6       1     180       UNU   UNU  10-18  UNU   UNU   UNU
-    166       6       1     180       UNU   UNU  10-0   UNU   UNU   UNU
-    166       6       1     180       UNU   UNU  10-3600 UNU   UNU   UNU
-    166       6       1     180       UNU   UNU  10-05  UNU   UNU   UNU
-    166       6       1     180       UNU   UNU  10-09  UNU   UNU   UNU
-    166       6       1     180       UNU   UNU  10-13  UNU   UNU   UNU
-    166       6       1     180       UNU   UNU  10-18  UNU   UNU   UNU
-    167       6       1     180       UNU   UNU  10-0   UNU   UNU   UNU
-    167       6       1     180       UNU   UNU  10-3600 UNU   UNU   UNU
-    167       6       1     180       UNU   UNU  10-05  UNU   UNU   UNU
-    167       6       1     180       UNU   UNU  10-09  UNU   UNU   UNU
-    167       6       1     180       UNU   UNU  10-13  UNU   UNU   UNU
-    167       6       1     180       UNU   UNU  10-18  UNU   UNU   UNU
-    168       6       1     180       UNU   UNU  10-0   UNU   UNU   UNU
-    168       6       1     180       UNU   UNU  10-3600 UNU   UNU   UNU
-    168       6       1     180       UNU   UNU  10-05  UNU   UNU   UNU
-    168       6       1     180       UNU   UNU  10-09  UNU   UNU   UNU
-    168       6       1     180       UNU   UNU  10-13  UNU   UNU   UNU
-    168       6       1     180       UNU   UNU  10-18  UNU   UNU   UNU
+    153       6       1      30       UNU   UNU     05  UNU   UNU   UNU
+#    153       6       1      30       UNU   UNU  01-18  UNU   UNU   UNU
+#    153       6       1      30       UNU   UNU  10-3600 UNU   UNU   UNU
+#    153       6       1      30       UNU   UNU  10-05  UNU   UNU   UNU
+#    153       6       1      30       UNU   UNU  10-09  UNU   UNU   UNU
+#    153       6       1      30       UNU   UNU  10-13  UNU   UNU   UNU
+#    153       6       1      30       UNU   UNU  10-18  UNU   UNU   UNU
+    154       6       1      30       UNU   UNU  05     UNU   UNU   UNU
+#    154       6       1      30       UNU   UNU  01-18  UNU   UNU   UNU
+#    154       6       1      30       UNU   UNU  10-3600 UNU   UNU   UNU
+#    153       6       1      30       UNU   UNU  10-05  UNU   UNU   UNU
+#    154       6       1      30       UNU   UNU  10-09  UNU   UNU   UNU
+#    154       6       1      30       UNU   UNU  10-13  UNU   UNU   UNU
+#    154       6       1      30       UNU   UNU  10-18  UNU   UNU   UNU
+    155       6       1      30       UNU   UNU  05     UNU   UNU   UNU
+#    155       6       1      30       UNU   UNU  01-18  UNU   UNU   UNU
+#    155       6       1      30       UNU   UNU  10-3600 UNU   UNU   UNU
+#    155       6       1      30       UNU   UNU  10-05  UNU   UNU   UNU
+#    155       6       1      30       UNU   UNU  10-09  UNU   UNU   UNU
+#    155       6       1      30       UNU   UNU  10-13  UNU   UNU   UNU
+#    155       6       1      30       UNU   UNU  10-18  UNU   UNU   UNU
+#    159       6       1     180       UNU   UNU  10-0   UNU   UNU   UNU
+#    159       6       1     180       UNU   UNU  10-3600 UNU   UNU   UNU
+#    159       6       1     180       UNU   UNU  10-05  UNU   UNU   UNU
+#    159       6       1     180       UNU   UNU  10-09  UNU   UNU   UNU
+#    159       6       1     180       UNU   UNU  10-13  UNU   UNU   UNU
+#    159       6       1     180       UNU   UNU  10-18  UNU   UNU   UNU
+#    161       6       1     180       UNU   UNU  10-0   UNU   UNU   UNU
+#    161       6       1     180       UNU   UNU  10-3600 UNU   UNU   UNU
+#    161       6       1     180       UNU   UNU  10-05  UNU   UNU   UNU
+#    161       6       1     180       UNU   UNU  10-09  UNU   UNU   UNU
+#    161       6       1     180       UNU   UNU  10-13  UNU   UNU   UNU
+#    161       6       1     180       UNU   UNU  10-18  UNU   UNU   UNU
+#    163       6       1     180       UNU   UNU  10-0   UNU   UNU   UNU
+#    163       6       1     180       UNU   UNU  10-3600 UNU   UNU   UNU
+#    163       6       1     180       UNU   UNU  10-05  UNU   UNU   UNU
+#    163       6       1     180       UNU   UNU  10-09  UNU   UNU   UNU
+#    163       6       1     180       UNU   UNU  10-13  UNU   UNU   UNU
+#    163       6       1     180       UNU   UNU  10-18  UNU   UNU   UNU
+    165       6       1     180       UNU   UNU  05      UNU   UNU   UNU
+#    165       6       1     180       UNU   UNU  10-0   UNU   UNU   UNU
+#    165       6       1     180       UNU   UNU  10-3600 UNU   UNU   UNU
+#    165       6       1     180       UNU   UNU  10-05  UNU   UNU   UNU
+#    165       6       1     180       UNU   UNU  10-09  UNU   UNU   UNU
+#    165       6       1     180       UNU   UNU  10-13  UNU   UNU   UNU
+#    165       6       1     180       UNU   UNU  10-18  UNU   UNU   UNU
+    166       6       1     180       UNU   UNU  05     UNU   UNU   UNU
+#    166       6       1     180       UNU   UNU  10-0   UNU   UNU   UNU
+#    166       6       1     180       UNU   UNU  10-3600 UNU   UNU   UNU
+#    166       6       1     180       UNU   UNU  10-05  UNU   UNU   UNU
+#    166       6       1     180       UNU   UNU  10-09  UNU   UNU   UNU
+#    166       6       1     180       UNU   UNU  10-13  UNU   UNU   UNU
+#    166       6       1     180       UNU   UNU  10-18  UNU   UNU   UNU
+#    167       6       1     180       UNU   UNU  10-0   UNU   UNU   UNU
+#    167       6       1     180       UNU   UNU  10-3600 UNU   UNU   UNU
+#    167       6       1     180       UNU   UNU  10-05  UNU   UNU   UNU
+#    167       6       1     180       UNU   UNU  10-09  UNU   UNU   UNU
+#    167       6       1     180       UNU   UNU  10-13  UNU   UNU   UNU
+#    167       6       1     180       UNU   UNU  10-18  UNU   UNU   UNU
+#    168       6       1     180       UNU   UNU  10-0   UNU   UNU   UNU
+#    168       6       1     180       UNU   UNU  10-3600 UNU   UNU   UNU
+#    168       6       1     180       UNU   UNU  10-05  UNU   UNU   UNU
+#    168       6       1     180       UNU   UNU  10-09  UNU   UNU   UNU
+#    168       6       1     180       UNU   UNU  10-13  UNU   UNU   UNU
+#    168       6       1     180       UNU   UNU  10-18  UNU   UNU   UNU
     169       6       1     180       UNU   UNU   UNU   UNU   UNU   UNU
     170       6       1     180       UNU   UNU   UNU   UNU   UNU   UNU
     172       6       1     180       UNU   UNU   UNU   UNU   UNU   UNU

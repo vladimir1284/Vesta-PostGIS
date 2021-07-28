@@ -45,7 +45,7 @@ class Package_AF1F:
             radial = []
             for j in range(num_bytes):
                 c = data[j]
-                run = c/16 # Cantidad de celdas
+                run = c >> 4 # Cantidad de celdas
                 val = c&0xf # Valor de las celdas               
                 #for k in range(run): radial.append(val)
                 # should be more efficient concatenate
