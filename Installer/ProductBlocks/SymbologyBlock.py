@@ -138,37 +138,37 @@ class SymbologyBlock:
                 
                 img.save(dir_name + gp.file_name +'.png')
 
-            else:
-                figureSize = (8, 8)  # Bigger for VAD & VWP
-                my_dpi = 150.0
-                # Update DB
-                query_str = """SELECT insert_graphic_product
-                    ('%s','%s',%i,'%s','%s','%s');""" % (gp.datetime,
-                    gp.RADAR_ID, gp.pdb.MH_msg_code,
-                    gp.dirname + '/' + gp.file_name, gp.data, gp.adata)
-                logger.debug(query_str)
-                try: 
-                    gp.DB_CONN.query(query_str)
-                except:
-                    try:
-                        logger.error(self.DB_CONN.error)
-                    except:
-                        logger.error("There is no database connection")
-                    
-                    
-                fig = pylab.figure(figsize=figureSize, dpi=my_dpi)
-                ax = pylab.Axes(fig, [0., 0., 1., 1.])
-                ax.set_axis_off()
-                fig.add_axes(ax)
-                plt = Palette('palettes/' + gp.pp.palette) 
-                
-                # Repeat for each package in the layer
-                while (actual_position < end_position):
-                    packet_code = read_half_unsigned(gp.binaryfile)
-                    package = PACKAGES[packet_code](gp)                
-                    package.plot(ax, plt)
-                    actual_position = gp.binaryfile.tell()    
-                
-                fig.savefig('images/' + self.gp.RADAR_ID + '/' + gp.file_name, transparent=gp.pp.transparent, dpi=my_dpi)
+            # else:
+            #     figureSize = (8, 8)  # Bigger for VAD & VWP
+            #     my_dpi = 150.0
+            #     # Update DB
+            #     query_str = """SELECT insert_graphic_product
+            #         ('%s','%s',%i,'%s','%s','%s');""" % (gp.datetime,
+            #         gp.RADAR_ID, gp.pdb.MH_msg_code,
+            #         gp.dirname + '/' + gp.file_name, gp.data, gp.adata)
+            #     logger.debug(query_str)
+            #     try: 
+            #         gp.DB_CONN.query(query_str)
+            #     except:
+            #         try:
+            #             logger.error(self.DB_CONN.error)
+            #         except:
+            #             logger.error("There is no database connection")
+            #
+            #
+            #     fig = pylab.figure(figsize=figureSize, dpi=my_dpi)
+            #     ax = pylab.Axes(fig, [0., 0., 1., 1.])
+            #     ax.set_axis_off()
+            #     fig.add_axes(ax)
+            #     plt = Palette('palettes/' + gp.pp.palette) 
+            #
+            #     # Repeat for each package in the layer
+            #     while (actual_position < end_position):
+            #         packet_code = read_half_unsigned(gp.binaryfile)
+            #         package = PACKAGES[packet_code](gp)                
+            #         package.plot(ax, plt)
+            #         actual_position = gp.binaryfile.tell()    
+            #
+            #     fig.savefig('images/' + self.gp.RADAR_ID + '/' + gp.file_name, transparent=gp.pp.transparent, dpi=my_dpi)
 
             

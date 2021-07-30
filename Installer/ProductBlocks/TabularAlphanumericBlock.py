@@ -48,12 +48,12 @@ class TabularAlphanumericBlock:
                         gp.adata += line + '\n'
                     else:
                         gp.data += line + '\n'
-#             f = open("adata.txt",'w')
-#             f.write(gp.adata)
-#             f.close()
-#             f = open("data.txt",'w')
-#             f.write(gp.data)
-#             f.close()   
+            f = open("adata.txt",'w')
+            f.write(gp.adata)
+            f.close()
+            f = open("data.txt",'w')
+            f.write(gp.data)
+            f.close()   
 #                 else:                        
 #                     process=True
 #                     num_lines = 0
@@ -90,4 +90,5 @@ class TabularAlphanumericBlock:
 #                         num_lines += 1
 #                     if(page_parse_error==True):
 #                         break
+
             

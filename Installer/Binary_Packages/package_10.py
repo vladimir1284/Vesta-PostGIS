@@ -28,7 +28,7 @@ class Package_10():
             logger.error("Data Error: Color level was out of range")
             
         self.length -= 2 # account for the color&length values
-        self.num_vectors=self.length/8
+        self.num_vectors=self.length >> 3
         
 
     def plot(self, axes, plt):

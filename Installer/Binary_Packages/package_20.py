@@ -21,7 +21,7 @@ class Package_20:
         Constructor
         '''        
         length=read_half(gp.binaryfile)
-        num=length/8 
+        num=length >> 3 
         
         # in this packet there are 4 fields (8 bytes) to be 
         # written for each symbol        

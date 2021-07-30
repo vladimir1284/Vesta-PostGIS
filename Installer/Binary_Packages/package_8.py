@@ -28,7 +28,7 @@ class Package_8:
        
         self.length -= 6 # account for the color/I/J Pos values
         
-        self.text = gp.binaryfile.read(self.length) # Leyendo cadena
+        self.text = gp.binaryfile.read(self.length).decode("utf-8") # Leyendo cadena
         
 
         logger.debug("Packet 8: Length=%4i  Text Color=%3i  I Pos: %4i  J Pos: %4i" 

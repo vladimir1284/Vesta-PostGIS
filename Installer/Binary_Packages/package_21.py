@@ -32,8 +32,8 @@ class Package_21:
         Jpos = coord[1] # Cell J coordinate at latest Volume Scan
 
          
-        self.Ipos = Ipos/8
-        self.Jpos = Jpos/8
+        self.Ipos = Ipos >> 3
+        self.Jpos = Jpos >> 3
          
         for i in range(8):
             trend_header = struct.unpack('>h2b',binaryfile.read(4))

@@ -86,15 +86,15 @@ class Cell_trend_data:
         # Insert storm cells
         for cell_trend in self.cells:
             [azimut, cell_range] = st.cell_location[cell_trend.cell_id]            
-            tops = ('{'+''.join('%.1f, '%x for x in cell_trend.cell_top))[:-2] +'}'
-            bases = '{'+''.join('%.1f, '%x for x in cell_trend.cell_base)[:-2] +'}'
-            max_ref_hgts = '{'+''.join('%.1f, '%x for x in cell_trend.max_ref_hgt)[:-2] +'}'
-            centroids = '{'+''.join('%.1f, '%x for x in cell_trend.centroid_hgt)[:-2] +'}'
-            poh = '{'+''.join('%i, '%x for x in cell_trend.prob_hail)[:-2] +'}'
-            posh = '{'+''.join('%i, '%x for x in cell_trend.prob_svr_hail)[:-2] +'}'
-            vil = '{'+''.join('%i, '%x for x in cell_trend.cell_based_VIL)[:-2] +'}'
-            maxZ = '{'+''.join('%i, '%x for x in cell_trend.max_ref)[:-2] +'}'
-            time = '{'+''.join('%i, '%x for x in self.time)[:-2] +'}'
+            tops = '{'+str(cell_trend.cell_top)[1:-1]+'}'
+            bases = '{'+str(cell_trend.cell_base)[1:-1]+'}'
+            max_ref_hgts = '{'+str(cell_trend.max_ref_hgt)[1:-1]+'}'
+            centroids = '{'+str(cell_trend.centroid_hgt)[1:-1]+'}'
+            poh = '{'+str(cell_trend.prob_hail)[1:-1]+'}'
+            posh = '{'+str(cell_trend.prob_svr_hail)[1:-1]+'}'
+            vil = '{'+str(cell_trend.cell_based_VIL)[1:-1]+'}'
+            maxZ = '{'+str(cell_trend.max_ref)[1:-1]+'}'
+            time = '{'+str(self.time)[1:-1]+'}'
             radar_id = "(SELECT id from vestaweb_radar WHERE radar_code='%s')" % self.gp.RADAR_ID
             
             query_str = """INSERT INTO public.vestaweb_stormcell(created, label,

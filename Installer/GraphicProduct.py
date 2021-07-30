@@ -19,7 +19,8 @@ import time
 
 SECS_PER_DAY = 86400 # Number of seconds in a day
 
-PCODES = {94: 'DR_94', 99: 'DV_99', 155: 'SDW_155', 137: 'ULR_137', 62: 'SS_62', 58: 'STI_58'}
+PCODES = {94: 'DR_94', 99: 'DV_99', 155: 'SDW_155', 137: 'ULR_137', 
+          62: 'SS_62', 58: 'STI_58', 48: 'VWP_48'}
 
 logger = logging.getLogger("GraphicProduct")
 
@@ -83,6 +84,66 @@ class GraphicProduct:
         if self.pdb.tab_off != 0:
             self.tb = TabularAlphanumericBlock(self)
             
+            # Upload tabular data for VWP
+            if pcode == 48:
+                hts = []
+                u = []
+                v = []
+                w = []
+                dir = []
+                rms = []
+                div = []
+                srng = []
+                elev = []
+                lines = self.data.split("\n")
+                for line in lines:
+                    # Avoid headers
+                    if not((line.find("VAD") != -1) or \
+                        (line.find("ALT") != -1) or \
+                        (line.find("100ft") != -1)):
+                        values = line.split()
+                        if len(values) > 0:
+                            hts.append(int(values[0])*100)
+                            u.append(float(values[1]))
+                            v.append(float(values[2]))
+                            if (values[3].find("NA") != -1):
+                                w.append(1000) # No data
+                            else:
+                                w.append(float(values[3]))
+                            dir.append(int(values[4]))
+                            rms.append(float(values[6]))
+                            if (values[7].find("NA") != -1):
+                                div.append(1000) # No data
+                            else:
+                                div.append(float(values[7]))
+                            srng.append(float(values[8]))
+                            elev.append(float(values[9]))
+                
+                # Upload
+                hts = '{'+str(hts)[1:-1]+'}'
+                u = '{'+str(u)[1:-1]+'}'
+                v = '{'+str(v)[1:-1]+'}'
+                w = '{'+str(w)[1:-1]+'}'
+                dir = '{'+str(dir)[1:-1]+'}'
+                rms = '{'+str(rms)[1:-1]+'}'
+                div = '{'+str(div)[1:-1]+'}'
+                srng = '{'+str(srng)[1:-1]+'}'
+                elev = '{'+str(elev)[1:-1]+'}'
+
+                query_str = """INSERT INTO public.vestaweb_vwp(created, radar_id,
+                                hts, u, v, w, dir, rms, div, srng, elev) VALUES 
+                                ('%s', (SELECT id from vestaweb_radar WHERE 
+                                radar_code='%s'), '%s', '%s', '%s', '%s', '%s', 
+                                '%s', '%s', '%s', '%s') """ % (self.datetime, 
+                                self.RADAR_ID, hts, u, v, w, dir, rms, div, srng, elev)
+                logger.debug(query_str)
+                try:      
+                    cur = self.DB_CONN.cursor()
+                    cur.execute(query_str)
+                    self.DB_CONN.commit()
+                except (Exception, pg.DatabaseError) as error:
+                    logger.error(error)
+                
         # Parse Symbology Block or StTabularAlphanumeric
         if self.pdb.sym_off != 0:
             if self.pp.stand_alone:
