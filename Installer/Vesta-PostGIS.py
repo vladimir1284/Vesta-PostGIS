@@ -1,4 +1,3 @@
-#!./vesta/bin/python
 # -*- coding: utf-8 -*-
 '''
 Created on 08/04/2013
@@ -40,7 +39,6 @@ if __name__ == '__main__':
     try:
         gp = GraphicProduct(filename, 'products_properties.xml', RADAR_ID)
         gp.upload()
-        # subprocess.getoutput('rm %s' % filename)
     except:        
         class Myfile:
             def __init__(self):
@@ -48,6 +46,6 @@ if __name__ == '__main__':
             def write(self,txt):
                 logger.error(txt)
         logger_file = Myfile()
-        traceback.print_exc(file = logger_file)
-        
-        
+        traceback.print_exc(file = logger_file)        
+    
+    # subprocess.getoutput('rm %s' % filename)    

@@ -12,6 +12,7 @@ from ImageUpload import ImageUpload
 from SiteConfiguration import OFFSET
 from ProductBlocks.StandAloneTabularAlphanumeric import StTabularAlphanumeric
 from Phenomenon.CellTrend import Cell_trend_data
+import subprocess
 
 import psycopg2 as pg
 from time import gmtime
@@ -182,32 +183,25 @@ class GraphicProduct:
                 logger.error(error)
 
         # Upload Images
-#         start_ftp = time.time()
-#
-#         if self.images: iu = ImageUpload('vesta-web',
-#                                          'vesta_web_ftp', 
-#                                          'billar') # Connect if necessary
-#         for image in self.images:
-#             fig_file = open('images/'+self.RADAR_ID+'/'+image, 'rb')
-#             iu.upload(fig_file, image, self.dirname)
-#             if iu.ok:
-#                 subprocess.getoutput('rm images/'+self.RADAR_ID+'/'+image)
-#         fig_file.close()
-#
-#         if self.pp.geographic:
-#             wfile = open('images/'+self.RADAR_ID+'/'+image+'w', 'rb')
-#             iu.upload(wfile, image+'w', self.dirname)
-#             if iu.ok:
-#                 subprocess.getoutput('rm images/'+self.RADAR_ID+'/'+image+'w')
-#             wfile.close()
-#
-#
-#         if self.images: iu.disconnect()  # Disonnect if connected  
-#
-#         logger.debug('FTP image upload time: %ims' % int(1e3*(time.time()
-#                                                                -start_ftp)))
-#
-#
+        start_ftp = time.time()
+
+        if self.images: iu = ImageUpload('localhost',
+                                         'vesta-web', 
+                                         'billar') # Connect if necessary
+        for image in self.images:
+            fig_file = open('images/'+self.RADAR_ID+'/'+image, 'rb')
+            iu.upload(fig_file, image, self.dirname)
+            if iu.ok:
+                subprocess.getoutput('rm images/'+self.RADAR_ID+'/'+image)
+        fig_file.close()
+
+
+        if self.images: iu.disconnect()  # Disonnect if connected  
+
+        logger.debug('FTP image upload time: %ims' % int(1e3*(time.time()
+                                                               -start_ftp)))
+
+
 #         # Feed Vesta|Mosaic
 #         if self.pp.mosaic_name != '':
 #             self.binaryfile.close()

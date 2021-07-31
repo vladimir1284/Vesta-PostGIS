@@ -136,6 +136,7 @@ class SymbologyBlock:
                 img = img.convert('P')
                 img.putpalette(colors.palette, rawmode='RGBA')
                 
+                self.gp.images.append(gp.file_name +'.png') # For FTP
                 img.save(dir_name + gp.file_name +'.png')
 
             # else:

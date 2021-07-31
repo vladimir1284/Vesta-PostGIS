@@ -13,7 +13,7 @@ class ImageUpload:
     #TODO hacer login una sola vez
     def __init__(self,host,user,passwd):
         self.ftp = ftplib.FTP()
-        self.ftp.connect(host)#'vesta-web')
+        self.ftp.connect(host)
         logger.debug(self.ftp.getwelcome())
         self.cd = True
         
