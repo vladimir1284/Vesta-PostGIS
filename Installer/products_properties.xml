@@ -130,6 +130,23 @@
       geographic = "True"      
     />
     <product
+      pcode="138"
+      long_name="Storm Total Rainfall Accumulation"
+      resolution = "2"
+      range = "464" 
+      polar = "True"
+      data_levels = "16"
+      compressed = "False"
+      name = "STP"
+      mosaic_name = "NTP"
+      palette = "precip_16.plt"
+      transparent = "True"
+      axis = "2"
+      stand_alone = "False"
+      non_graphic = "False"     
+      geographic = "True"      
+    />
+    <product
       pcode="30"
       long_name="Base Spectrum Width"
       resolution = "1"
@@ -210,6 +227,23 @@
       palette = "refl_16.plt"
       transparent = "True"
       axis = "1"
+      stand_alone = "False"
+      non_graphic = "False"     
+      geographic = "True"      
+    />
+    <product
+      pcode="27"
+      long_name="Base Velocity"
+      resolution = "1"
+      range = "464" 
+      polar = "True"
+      data_levels = "16"
+      compressed = "False"
+      name = "V"
+      mosaic_name = ""
+      palette = "vel_16.plt"
+      transparent = "True"
+      axis = "4"
       stand_alone = "False"
       non_graphic = "False"     
       geographic = "True"      
@@ -415,7 +449,7 @@
       transparent = "True"
       axis = "3"
       stand_alone = "True"
-      non_graphic = "False"     
+      non_graphic = "True"     
       geographic = "False"      
     />
     <product

@@ -20,8 +20,9 @@ import time
 
 SECS_PER_DAY = 86400 # Number of seconds in a day
 
-PCODES = {94: 'DR_94', 99: 'DV_99', 155: 'SDW_155', 137: 'ULR_137', 
-          62: 'SS_62', 58: 'STI_58', 48: 'VWP_48'}
+PCODES = {94: 'DR_94', 27: 'V_27', 30: 'SW_30', 137: 'ULR_137', 
+          62: 'SS_62', 58: 'STI_58', 48: 'VWP_48', 78: 'OHP_78', 
+          79: 'THP_79', 80: 'STP_80'}
 
 logger = logging.getLogger("GraphicProduct")
 
@@ -193,7 +194,7 @@ class GraphicProduct:
             iu.upload(fig_file, image, self.dirname)
             if iu.ok:
                 subprocess.getoutput('rm images/'+self.RADAR_ID+'/'+image)
-        fig_file.close()
+            fig_file.close()
 
 
         if self.images: iu.disconnect()  # Disonnect if connected  

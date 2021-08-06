@@ -86,14 +86,14 @@ class Cell_trend_data:
         # Insert storm cells
         for cell_trend in self.cells:
             [azimut, cell_range] = st.cell_location[cell_trend.cell_id]            
-            tops = '{'+str(cell_trend.cell_top)[1:-1]+'}'
-            bases = '{'+str(cell_trend.cell_base)[1:-1]+'}'
-            max_ref_hgts = '{'+str(cell_trend.max_ref_hgt)[1:-1]+'}'
-            centroids = '{'+str(cell_trend.centroid_hgt)[1:-1]+'}'
-            poh = '{'+str(cell_trend.prob_hail)[1:-1]+'}'
-            posh = '{'+str(cell_trend.prob_svr_hail)[1:-1]+'}'
-            vil = '{'+str(cell_trend.cell_based_VIL)[1:-1]+'}'
-            maxZ = '{'+str(cell_trend.max_ref)[1:-1]+'}'
+            tops = '{'+str(cell_trend.cell_top.tolist())[1:-1]+'}'
+            bases = '{'+str(cell_trend.cell_base.tolist())[1:-1]+'}'
+            max_ref_hgts = '{'+str(cell_trend.max_ref_hgt.tolist())[1:-1]+'}'
+            centroids = '{'+str(cell_trend.centroid_hgt.tolist())[1:-1]+'}'
+            poh = '{'+str(cell_trend.prob_hail.tolist())[1:-1]+'}'
+            posh = '{'+str(cell_trend.prob_svr_hail.tolist())[1:-1]+'}'
+            vil = '{'+str(cell_trend.cell_based_VIL.tolist())[1:-1]+'}'
+            maxZ = '{'+str(cell_trend.max_ref.tolist())[1:-1]+'}'
             time = '{'+str(self.time)[1:-1]+'}'
             radar_id = "(SELECT id from vestaweb_radar WHERE radar_code='%s')" % self.gp.RADAR_ID
             
