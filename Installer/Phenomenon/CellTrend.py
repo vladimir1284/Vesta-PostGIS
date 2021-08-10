@@ -19,19 +19,16 @@ class Cell_trend_data:
         self.gp = gp
         binaryfile = gp.binaryfile
         binaryfile.seek(OFFSET + gp.pdb.gra_off*2,0)
-        self.times = []
         self.time = []
         self.cells = []
         
         # Leyendo las horas
         block_len =  read_half(binaryfile)
         num_vols =  read_byte(binaryfile)
-        lts_vol_ptr = read_byte(binaryfile)
+        self.lts_vol_ptr_time = read_byte(binaryfile)
         for i in range(num_vols):
-            min = read_half(binaryfile)
-            self.time.append(min)
-            self.times.append('%02i%02i' % (min/60, pylab.mod(min,60)))
-            #print self.times[i]
+            minutes = read_half(binaryfile)
+            self.time.append(minutes)
         
         # Leyendo los datos de las celdas
         while True:
@@ -99,12 +96,14 @@ class Cell_trend_data:
             
             query_str = """INSERT INTO public.vestaweb_stormcell(created, label,
                         azimut, range, tops, bases, max_ref_hgts, centroids, 
-                        poh, posh, vil, "maxZ", time, adata_id, radar_id)
+                        poh, posh, vil, "maxZ", time, adata_id, radar_id, 
+                        lst_vol_time_ptr, lst_vol_data_ptr)
                         VALUES ('%s', '%s', %i, %i, '%s', '%s', '%s', '%s', '%s', '%s', '%s', 
-                        '%s', '%s', %i, %s)""" % (
+                        '%s', '%s', %i, %s, %i, %i)""" % (
                             self.gp.datetime, cell_trend.cell_id, azimut, cell_range,
                             tops, bases, max_ref_hgts, centroids, poh, posh, vil, 
-                            maxZ, time, adata_id, radar_id)
+                            maxZ, time, adata_id, radar_id, self.lts_vol_ptr_time,
+                            cell_trend.latest_vol)
             
             try:      
                 cur = self.gp.DB_CONN.cursor()

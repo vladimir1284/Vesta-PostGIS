@@ -161,7 +161,9 @@ class GraphicProduct:
             # Check for any storm present
             binaryfile = self.binaryfile
             binaryfile.seek(OFFSET + self.pdb.gra_off*2,0)
-            if len(binaryfile.read(2)) != 0:
+            pcode = binaryfile.read(2)
+            # print (struct.unpack('>H',pcode))
+            if len(pcode) != 0:
                 ct = Cell_trend_data(self)
                 ct.upload(self.st)
         

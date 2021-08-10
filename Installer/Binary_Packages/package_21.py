@@ -28,12 +28,12 @@ class Package_21:
         self.cell = Cell_trend(cell_id)
         
         coord = struct.unpack('>2h',binaryfile.read(4))
-        Ipos = coord[0] # Cell I coordinate at latest Volume Scan
-        Jpos = coord[1] # Cell J coordinate at latest Volume Scan
-
-         
-        self.Ipos = Ipos >> 3
-        self.Jpos = Jpos >> 3
+        # Ipos = coord[0] # Cell I coordinate at latest Volume Scan
+        # Jpos = coord[1] # Cell J coordinate at latest Volume Scan
+        #
+        #
+        # self.Ipos = Ipos >> 3
+        # self.Jpos = Jpos >> 3
          
         for i in range(8):
             trend_header = struct.unpack('>h2b',binaryfile.read(4))
@@ -50,12 +50,15 @@ class Package_21:
                                             # this trend code in the circular list
             latest_vol_ptr=trend_header[2]  # Pointer to the latest volume scan 
                                             # in the circular list
+            
+            # print(cell_id, latest_vol_ptr)
          
             values = struct.unpack('>'+str(num_vol)+'H',binaryfile.read(2*num_vol))
 #             values = [x/self.TREND_CODE_FACTOR[trend_code] for x in values] # 100 Feet
             self.cell.setValues(trend_code, pylab.array(values))
 
-
+        self.cell.setLatestVol(latest_vol_ptr)
+        
 class Cell_trend:
     def __init__(self, cell_id):
         self.TREND_DATA = {1:self.setCell_top, 2:self.setCell_base,
@@ -66,6 +69,9 @@ class Cell_trend:
         
     def setValues(self, trend_code, values):
         self.TREND_DATA[trend_code](values)
+        
+    def setLatestVol(self, latest_vol_ptr):
+        self.latest_vol = latest_vol_ptr
         
     def setCell_top(self, values):
         # If the value is over 700, then 1000 has been added to denote that 
